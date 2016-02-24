@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goqual.mercury.R;
@@ -28,6 +29,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     String EXTRA_TRIGGER_SYNC_FLAG;
     @Bind(R.id.main_feed_container)
     RecyclerView mContainer;
+    @Bind(R.id.main_total_count_feed)
+    TextView mTxtFeedCount;
     @Bind(R.id.fab_add_feed)
     com.melnykov.fab.FloatingActionButton mFabAddFeed;
 
@@ -48,6 +51,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void showFeeds(List<FeedDTO> feeds) {
         Common.log(TAG, "SHOW FEEDS");
+        mTxtFeedCount.setText(feeds.size() + "");
         mFeedAdapter.setFeedList(feeds);
         mFeedAdapter.notifyDataSetChanged();
     }
@@ -55,6 +59,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void showFeedssEmpty() {
         Common.log(TAG, "SHOW EMPTY FEEDS");
+        mTxtFeedCount.setText("0");
         mFeedAdapter.setFeedList(Collections.<FeedDTO>emptyList());
         mFeedAdapter.notifyDataSetChanged();
         Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
@@ -63,6 +68,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void showError() {
         Common.log(TAG, "ERROR!");
+        Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
     }
 
     @Override

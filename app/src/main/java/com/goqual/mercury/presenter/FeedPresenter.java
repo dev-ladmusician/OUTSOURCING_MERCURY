@@ -5,16 +5,11 @@ import com.goqual.mercury.data.local.dto.FeedDTO;
 import com.goqual.mercury.data.remote.FeedService;
 import com.goqual.mercury.ui.MainMvpView;
 import com.goqual.mercury.util.Common;
-
 import java.util.List;
-
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by ladmusician on 2/23/16.
- */
 public class FeedPresenter extends BasePresenter<MainMvpView>{
     private final String TAG = "PRESENTER_FEED";
     private DataManager mDataManager = null;
@@ -47,6 +42,7 @@ public class FeedPresenter extends BasePresenter<MainMvpView>{
 
                     @Override
                     public void onNext(List<FeedDTO> feeds) {
+                        Common.log(TAG, "get feed successfully!");
                         if (feeds.isEmpty()) {
                             getMvpView().showFeedssEmpty();
                         } else {

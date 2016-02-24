@@ -47,7 +47,7 @@
                     android:text="총 게시물"/>
 
                 <TextView
-                    android:id="@+id/txt_total_feed"
+                    android:id="@+id/main_total_count_feed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/main_title_sub_title_margin_top"
@@ -56,7 +56,7 @@
                     android:textSize="@dimen/main_title_sub_title_size"
                     android:textColor="@color/FEED_COUNT"
                     android:layout_toRightOf="@+id/main_sub_title"
-                    android:text="5"/>
+                    android:text="0"/>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
