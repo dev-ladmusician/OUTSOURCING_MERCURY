@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryDark">#0277BD</color>
+    <color name="colorAccent">#0277BD</color>
 
     <color name="WHITE">#FFF</color>
     <color name="TRANSPARENT">#FFFFFFFF</color>
     <color name="FEED_COUNT">#FDF698</color>
+    <color name="FEED_NUM">#6C92AF</color>
+
+    <color name="IDENTITY_BLUE">#01569B</color>
+    <color name="PRESSED_BLUE">#0277BD</color>
+    <color name="LIGHT_BLUE">#0288D1</color>
+    <color name="LIGHT_BLUE_TRANSPARENT">#1A0288D1</color>
+
+    <color name="BG_BASE">#EBEBEB</color>
 </resources>

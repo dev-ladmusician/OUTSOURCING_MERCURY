@@ -1,5 +1,6 @@
 package com.goqual.mercury.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         switch (v.getId()) {
             case R.id.fab_add_feed:
                 Common.log(TAG, "FAB CLICK");
+                startActivity(new Intent(this, AddFeedActivity.class));
                 break;
             default:
                 break;
