@@ -8,9 +8,10 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Feed extends RealmObject {
     @PrimaryKey
-    private int _feedid;
-
     private int id;
+    private int _feedid;
+    private String title;
+    private String period;
 
     public int get_feedid() {
         return _feedid;
@@ -26,5 +27,21 @@ public class Feed extends RealmObject {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 }
