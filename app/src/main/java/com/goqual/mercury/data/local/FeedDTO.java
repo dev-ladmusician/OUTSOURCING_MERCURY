@@ -1,4 +1,4 @@
-package com.goqual.mercury.data.local.dto;
+package com.goqual.mercury.data.local;
 
 /**
  * Created by ladmusician on 2/23/16.

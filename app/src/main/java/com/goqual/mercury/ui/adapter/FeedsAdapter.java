@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.goqual.mercury.R;
-import com.goqual.mercury.data.local.dto.FeedDTO;
+import com.goqual.mercury.data.local.FeedDTO;
 
 import java.util.ArrayList;
 import java.util.List;

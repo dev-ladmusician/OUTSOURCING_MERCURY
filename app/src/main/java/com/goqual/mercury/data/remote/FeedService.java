@@ -1,7 +1,7 @@
 package com.goqual.mercury.data.remote;
 
 import com.goqual.mercury.data.RetrofitManager;
-import com.goqual.mercury.data.local.dto.FeedDTO;
+import com.goqual.mercury.data.local.FeedDTO;
 
 import java.util.List;
 

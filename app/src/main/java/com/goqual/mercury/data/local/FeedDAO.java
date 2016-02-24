@@ -1,6 +1,5 @@
-package com.goqual.mercury.data.local.dao;
+package com.goqual.mercury.data.local;
 
-import com.goqual.mercury.data.local.dto.FeedDTO;
 import com.goqual.mercury.data.model.Feed;
 
 import java.util.ArrayList;

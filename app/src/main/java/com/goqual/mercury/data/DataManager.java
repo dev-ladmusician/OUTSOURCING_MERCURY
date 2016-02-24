@@ -1,6 +1,6 @@
 package com.goqual.mercury.data;
 
-import com.goqual.mercury.data.local.dto.FeedDTO;
+import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.data.remote.FeedService;
 import com.goqual.mercury.util.Common;
 

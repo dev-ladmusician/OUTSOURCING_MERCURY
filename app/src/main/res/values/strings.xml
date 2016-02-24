@@ -2,4 +2,7 @@
     <string name="app_name">MERCURY</string>
     <string name="EXTRA_TRIGGER_SYNC_FLAG">EXTRA_TRIGGER_SYNC_FLAG</string>
     <string name="ERROR_LOADING_FEEDS">게시물을 들고오는데 오류가 발생했습니다.</string>
+
+    // INTENT FLAG
+    <string name="FEED_ID">FEED_ID</string>
 </resources>

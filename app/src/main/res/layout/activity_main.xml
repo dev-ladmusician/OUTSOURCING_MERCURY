@@ -24,7 +24,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="@dimen/main_title_container_padding_left"
+                android:paddingLeft="@dimen/main_title_container_padding_side"
                 android:layout_weight="1">
 
                 <TextView

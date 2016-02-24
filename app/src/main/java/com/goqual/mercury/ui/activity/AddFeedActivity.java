@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,8 +11,9 @@ import android.widget.TextView;
 
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.goqual.mercury.R;
-import com.goqual.mercury.presenter.AddFeedPresenter;
+import com.goqual.mercury.helper.AddFeedHelper;
 import com.goqual.mercury.ui.AddFeedMvpView;
+import com.goqual.mercury.ui.base.BaseActivity;
 import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Dialog;
 import com.goqual.mercury.util.Keyboard;
@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddFeedActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, AddFeedMvpView{
+public class AddFeedActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener, AddFeedMvpView{
     private final String TAG = "ACTIVITY_ADD_FEED";
     private String mStarted = "";
     private String mEnded = "";
@@ -32,7 +32,7 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
 
     private Context mContext = null;
     private DatePickerDialog mDatePicker = null;
-    private AddFeedPresenter mAddFeedPresenter = null;
+    private AddFeedHelper mAddFeedHelper = null;
 
     @Bind(R.id.add_feed_title)
     EditText mEditTitle;
@@ -43,7 +43,7 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
     @Bind(R.id.add_feed_container)
     LinearLayout mContainer;
 
-    @OnClick({R.id.add_feed_submit, R.id.add_feed_container})
+    @OnClick({R.id.add_feed_submit, R.id.add_feed_container, R.id.join_btn_back, R.id.add_feed_started, R.id.add_feed_ended})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_feed_submit:
@@ -53,6 +53,13 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
                 break;
             case R.id.add_feed_container:
                 Keyboard.hideSoftKeyboard(this);
+                break;
+            case R.id.join_btn_back:
+                finish();
+                break;
+            case R.id.add_feed_started:
+            case R.id.add_feed_ended:
+                getDatePicker().show(getFragmentManager(), "Datepickerdialog");
                 break;
             default:
                 break;
@@ -68,6 +75,7 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
 
     @Override
     public void addFail() {
+        Common.log(TAG, "FAIL TO ADD FEED");
         Dialog.simpleDialog(mContext,
                 "게시물 추가 오류",
                 "게시물 추가하는데 오류가 발생했습니다.",
@@ -138,6 +146,8 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
 
             );
 
+            mDatePicker.setStartTitle("시작일");
+            mDatePicker.setEndTitle("마감일");
             mDatePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
@@ -150,8 +160,8 @@ public class AddFeedActivity extends AppCompatActivity implements DatePickerDial
         return mDatePicker;
     }
 
-    private AddFeedPresenter getAddFeedPresenter() {
-        if (mAddFeedPresenter == null) mAddFeedPresenter = new AddFeedPresenter();
-        return mAddFeedPresenter;
+    private AddFeedHelper getAddFeedPresenter() {
+        if (mAddFeedHelper == null) mAddFeedHelper = new AddFeedHelper();
+        return mAddFeedHelper;
     }
 }

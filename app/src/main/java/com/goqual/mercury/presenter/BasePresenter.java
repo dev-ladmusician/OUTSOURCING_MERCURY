@@ -2,6 +2,7 @@ package com.goqual.mercury.presenter;
 
 import com.goqual.mercury.data.DataManager;
 import com.goqual.mercury.data.remote.FeedService;
+import com.goqual.mercury.data.remote.ReportService;
 import com.goqual.mercury.ui.base.BaseMvpView;
 
 /**
@@ -12,6 +13,7 @@ import com.goqual.mercury.ui.base.BaseMvpView;
 public class BasePresenter<T extends BaseMvpView> implements Presenter<T> {
     private DataManager mDataManager = null;
     private FeedService mFeedService = null;
+    private ReportService mReportService = null;
     private T mMvpView;
 
     @Override
@@ -48,6 +50,13 @@ public class BasePresenter<T extends BaseMvpView> implements Presenter<T> {
             mFeedService = new FeedService();
 
         return mFeedService;
+    }
+
+    public ReportService getReportService() {
+        if (mReportService == null)
+            mReportService = new ReportService();
+
+        return mReportService;
     }
 
     public DataManager getDataManager() {

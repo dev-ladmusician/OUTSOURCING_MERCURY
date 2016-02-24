@@ -21,11 +21,19 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"></RelativeLayout>
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/join_btn_back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/btn_back"/>
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="@dimen/main_title_container_padding_left"
+                android:paddingLeft="@dimen/main_title_container_padding_side"
                 android:layout_weight="1">
 
                 <TextView

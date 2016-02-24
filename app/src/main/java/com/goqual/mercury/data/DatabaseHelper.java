@@ -1,7 +1,7 @@
 package com.goqual.mercury.data;
 
-import com.goqual.mercury.data.local.dao.FeedDAO;
-import com.goqual.mercury.data.local.dto.FeedDTO;
+import com.goqual.mercury.data.local.FeedDAO;
+import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.util.Common;
 
 import java.util.Collection;

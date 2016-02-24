@@ -1,7 +1,8 @@
 package com.goqual.mercury.presenter;
 
-import com.goqual.mercury.data.local.FeedDTO;
+import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.ui.MvpView;
+import com.goqual.mercury.util.Common;
 
 import java.util.List;
 
@@ -9,8 +10,13 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class FeedPresenter extends BasePresenter<MvpView>{
-    private final String TAG = "PRESENTER_FEED";
+public class ReportPresenter extends BasePresenter<MvpView>{
+    private int mFeedId;
+    private final String TAG = "PRESENTER_REPORT";
+
+    public ReportPresenter(int mFeedId) {
+        this.mFeedId = mFeedId;
+    }
 
     @Override
     public void attachView(MvpView mvpView) {
@@ -22,11 +28,12 @@ public class FeedPresenter extends BasePresenter<MvpView>{
         super.detachView();
     }
 
-    public void loadFeeds() {
-        getFeedService().getFeedApi().getFeeds()
+    public void loadReports() {
+        Common.log(TAG, "FEED ID : " + mFeedId);
+        getReportService().getReportApi().getReports(mFeedId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<FeedDTO>>() {
+                .subscribe(new Observer<List<ReportDTO>>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -34,19 +41,19 @@ public class FeedPresenter extends BasePresenter<MvpView>{
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
+                        Common.log(TAG, "There was an error loading the feeds.");
                         getMvpView().showError();
                     }
 
                     @Override
-                    public void onNext(List<FeedDTO> feeds) {
-                        if (feeds.isEmpty()) {
+                    public void onNext(List<ReportDTO> reports) {
+                        Common.log(TAG, "get feed successfully!");
+                        if (reports.isEmpty()) {
                             getMvpView().showEmptyItems();
                         } else {
-                            getMvpView().showItems(feeds);
+                            getMvpView().showItems(reports);
                         }
                     }
                 });
     }
-
-
 }

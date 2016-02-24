@@ -1,7 +1,7 @@
 package com.goqual.mercury.data;
 
-import com.goqual.mercury.data.local.dao.FeedDAO;
-import com.goqual.mercury.util.Common;
+import com.goqual.mercury.data.local.FeedDAO;
+import com.goqual.mercury.data.local.ReportDAO;
 
 import io.realm.Realm;
 
@@ -34,8 +34,12 @@ public class RealmManager {
     }
 
     public FeedDAO createFeedDAO() {
-        Common.log(TAG, "THREAD ID : " + Thread.currentThread().getId());
         checkForOpenRealm();
         return new FeedDAO(mRealm);
+    }
+
+    public ReportDAO createReportDAO() {
+        checkForOpenRealm();
+        return new ReportDAO(mRealm);
     }
 }

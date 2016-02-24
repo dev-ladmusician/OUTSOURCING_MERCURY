@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.goqual.mercury.data.DataManager;
-import com.goqual.mercury.data.local.dto.FeedDTO;
+import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.receiver.SyncDataOnConnectionAvailable;
 import com.goqual.mercury.util.AndroidComponentUtil;
 import com.goqual.mercury.util.Common;
