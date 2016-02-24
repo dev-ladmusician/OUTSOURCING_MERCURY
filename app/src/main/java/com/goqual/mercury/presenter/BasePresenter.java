@@ -1,5 +1,7 @@
 package com.goqual.mercury.presenter;
 
+import com.goqual.mercury.data.DataManager;
+import com.goqual.mercury.data.remote.FeedService;
 import com.goqual.mercury.ui.base.BaseMvpView;
 
 /**
@@ -8,7 +10,8 @@ import com.goqual.mercury.ui.base.BaseMvpView;
  * can be accessed from the children classes by calling getMvpView().
  */
 public class BasePresenter<T extends BaseMvpView> implements Presenter<T> {
-
+    private DataManager mDataManager = null;
+    private FeedService mFeedService = null;
     private T mMvpView;
 
     @Override
@@ -38,6 +41,19 @@ public class BasePresenter<T extends BaseMvpView> implements Presenter<T> {
             super("Please call Presenter.attachView(MvpView) before" +
                     " requesting data to the Presenter");
         }
+    }
+
+    public FeedService getFeedService() {
+        if (mFeedService == null)
+            mFeedService = new FeedService();
+
+        return mFeedService;
+    }
+
+    public DataManager getDataManager() {
+        if (mDataManager == null)
+            mDataManager = new DataManager();
+        return mDataManager;
     }
 }
 

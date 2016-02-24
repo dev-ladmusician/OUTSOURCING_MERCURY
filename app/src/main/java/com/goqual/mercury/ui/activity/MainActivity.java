@@ -83,13 +83,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mContainer.setAdapter(mFeedAdapter);
         mContainer.setLayoutManager(new LinearLayoutManager(this));
         getFeedPresenter().attachView(this);
-        getFeedPresenter().loadFeeds();
 
         mFabAddFeed.attachToRecyclerView(mContainer);
 
 //        if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
 //            startService(SyncDataService.getStartIntent(this));
 //        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getFeedPresenter().loadFeeds();
     }
 
     @Override

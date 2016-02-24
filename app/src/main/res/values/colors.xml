@@ -14,5 +14,9 @@
     <color name="LIGHT_BLUE">#0288D1</color>
     <color name="LIGHT_BLUE_TRANSPARENT">#1A0288D1</color>
 
+    <color name="RED">#FF473B</color>
+
     <color name="BG_BASE">#EBEBEB</color>
+
+    <color name="TEXT_COLOR">#757575</color>
 </resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="content"
+        android:textColor="@color/TEXT_COLOR" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialog_btn_height"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@color/RED"
+            android:orientation="horizontal"
+            android:text="CANCEL"
+            android:textColor="@color/WHITE" />
+
+        <Button
+            android:id="@+id/dialog_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialog_btn_height"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@color/IDENTITY_BLUE"
+            android:orientation="horizontal"
+            android:text="OK"
+            android:textColor="@color/WHITE" />
+    </LinearLayout>
+</RelativeLayout>

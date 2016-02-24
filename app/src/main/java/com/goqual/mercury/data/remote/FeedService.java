@@ -5,7 +5,10 @@ import com.goqual.mercury.data.local.dto.FeedDTO;
 
 import java.util.List;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import rx.Observable;
 
 /**
@@ -28,5 +31,14 @@ public class FeedService {
     public interface FeedApi {
         @GET("api/feed/gets")
         Observable<List<FeedDTO>> getFeeds();
+
+        @FormUrlEncoded
+        @POST("api/feed/add")
+        Observable<FeedDTO> addFeed (
+                @Field("userId") int userId,
+                @Field("title") String title,
+                @Field("started") String started,
+                @Field("ended") String ened
+        );
     }
 }
