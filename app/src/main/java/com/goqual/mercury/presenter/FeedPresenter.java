@@ -48,8 +48,8 @@ public class FeedPresenter extends BasePresenter<MvpView>{
                 });
     }
 
-    public void loadFeeds() {
-        getFeedService().getFeedApi().getFeeds()
+    public void loadFeeds(int userId) {
+        getFeedService().getFeedApi().getFeeds(userId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<FeedDTO>>() {

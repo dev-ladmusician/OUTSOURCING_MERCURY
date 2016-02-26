@@ -20,11 +20,23 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"></RelativeLayout>
+                android:layout_weight="1">
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/main_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/WHITE"
+                    android:background="@color/TRANSPARENT"/>
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingLeft="@dimen/main_title_container_padding_side"
+                android:paddingRight="@dimen/main_title_container_padding_side"
                 android:layout_weight="1">
 
                 <TextView
@@ -64,13 +76,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7">
+        android:layout_weight="7"
+        android:background="@color/BG_BASE">
+
+        <RelativeLayout
+            android:id="@+id/main_feed_no_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="게시물이 아직 없습니다."/>
+        </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_feed_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/WHITE"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
         <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab_add_feed"
@@ -80,8 +103,8 @@
             android:layout_height="@dimen/fab_size_normal"
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_add_feed"
-            fab:fab_colorNormal="@color/TRANSPARENT"
-            fab:fab_colorPressed="@color/TRANSPARENT"
+            fab:fab_colorNormal="#EBEBEB"
+            fab:fab_colorPressed="@color/LIGHT_BLUE_TRANSPARENT"
             fab:fab_colorRipple="#85B7DE" />
     </RelativeLayout>
 </LinearLayout>

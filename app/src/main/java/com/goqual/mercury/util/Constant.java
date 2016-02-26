@@ -5,4 +5,15 @@ package com.goqual.mercury.util;
  */
 public class Constant {
     public final static String BASE_URL = "http://goqual.com/MERCURY/";
+    public final static String IMG_BASE_URL = "http://goqual.com/MERCURY/static/img/";
+
+    public static int NEXT_STEP = 1;
+    public static int BACK_STEP = 2;
+    public static int LOGIN_DONE = 3;
+
+    public static int FRAGMENT_LOGIN = 0;
+    public static int FRAGMENT_JOIN = 1;
+
+    public static boolean CHECK_USERNAME_AVAILABLE = true;
+    public static boolean CHECK_USERNAME_INAVAILABLE = false;
 }

@@ -5,7 +5,7 @@
     <color name="colorAccent">#0277BD</color>
 
     <color name="WHITE">#FFF</color>
-    <color name="TRANSPARENT">#FFFFFFFF</color>
+    <color name="TRANSPARENT">#00000000</color>
     <color name="FEED_COUNT">#FDF698</color>
     <color name="FEED_NUM">#6C92AF</color>
 
@@ -19,4 +19,8 @@
     <color name="BG_BASE">#EBEBEB</color>
 
     <color name="TEXT_COLOR">#757575</color>
+
+    <color name="AUTH_TEXT_COLOR">#8AFFFFFF</color>
+    <color name="AUTH_HIGHLIGHT">#33FAFAFA</color>
+    <color name="AUTH_BTN_HIGHLIGHT">#80EFEFEF</color>
 </resources>

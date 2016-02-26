@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/join_btn_back"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/btn_back"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/auth_join_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_join_name"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="이름"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <RelativeLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height">
+
+                    <EditText
+                        android:id="@+id/auth_join_username"
+                        android:layout_width="@dimen/auth_content_width_partial"
+                        android:layout_height="@dimen/auth_content_height"
+                        android:hint="아이디"
+                        android:textSize="@dimen/auth_text_size"
+                        android:textColor="@color/AUTH_TEXT_COLOR"
+                        android:textColorHint="@color/AUTH_TEXT_COLOR"
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/style_auth_edit"/>
+
+                    <Button
+                        android:id="@+id/auth_join_username_check"
+                        android:layout_toRightOf="@+id/auth_join_username"
+                        android:layout_marginLeft="10dp"
+                        android:text="중복확인"
+                        android:textColor="#FFF"
+                        android:layout_width="@dimen/auth_content_width_side"
+                        android:layout_height="@dimen/auth_content_height"
+                        android:background="@drawable/style_auth_btn" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_join_pass"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="비밀번호"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_join_pass_verify"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="비밀번호 확인"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+
+                <ImageView
+                    android:id="@+id/auth_join_pass_delete"
+                    android:visibility="gone"
+                    android:layout_alignRight="@+id/auth_join_pass_verify"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="@dimen/auth_ic_size"
+                    android:layout_height="@dimen/auth_ic_size"
+                    android:src="@drawable/img_delete"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_join_phone"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="연락처"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"></RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_line"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/auth_join_submit"
+                android:text="가입하기"
+                android:textColor="#FFF"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/auth_content_width"
+                android:layout_height="@dimen/auth_content_height"
+                android:background="@drawable/style_auth_join_btn" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

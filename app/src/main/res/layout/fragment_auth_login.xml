@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_main">
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"></RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+        <ImageView
+            android:id="@+id/login_symbol"
+            android:layout_width="@dimen/symbol_width"
+            android:layout_height="@dimen/symbol_height"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_symbol"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="25dp"
+            android:textColor="#fff"
+            android:layout_below="@+id/login_symbol"
+            android:text="영천 중앙초등학교"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_login_username"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="아이디"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/auth_login_pass"
+                    android:layout_width="@dimen/auth_content_width"
+                    android:layout_height="@dimen/auth_content_height"
+                    android:layout_centerInParent="true"
+                    android:hint="비밀번호"
+                    android:textSize="@dimen/auth_text_size"
+                    android:textColor="@color/AUTH_TEXT_COLOR"
+                    android:textColorHint="@color/AUTH_TEXT_COLOR"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/style_auth_edit"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <Button
+            android:id="@+id/auth_login_submit"
+            android:text="로그인"
+            android:textColor="#FFF"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/auth_content_width"
+            android:layout_height="@dimen/auth_content_height"
+            android:background="@drawable/style_auth_btn" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/img_line_or"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textColor="#fff"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/login_btn_join"
+                android:text="회원가입"
+                android:textColor="#FFF"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/auth_content_width"
+                android:layout_height="@dimen/auth_content_height"
+                android:background="@drawable/style_auth_join_btn" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

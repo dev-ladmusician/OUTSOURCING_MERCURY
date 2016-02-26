@@ -11,6 +11,10 @@ public class FeedDTO {
 
     public FeedDTO() {}
 
+    public FeedDTO(int feedId) {
+        this._feedid = feedId;
+    }
+
     public FeedDTO(int _feedid, String title, String period) {
         this._feedid = _feedid;
         this.title = title;

@@ -33,13 +33,25 @@ public class ReportService {
     public interface ReportApi {
         @GET("api/report/gets")
         Observable<List<ReportDTO>> getReports(
+                @Query("userId") int userId,
                 @Query("feedId") int feedId
+        );
+
+        @GET("api/report/get_by_id")
+        Observable<ReportDTO> getReportById(
+                @Query("reportId") int reportId
+        );
+
+        @GET("api/report/delete_by_id")
+        Observable<ReportDTO> deleteById(
+                @Query("reportId") int reportId
         );
 
         @Multipart
         @POST ("api/report/add")
         Observable<ReportDTO> addReport (
-                @Part("img\"; filename=\"pp.png\" ") RequestBody file,
+                @Part("img\"; filename=\"mercury.png\" ") RequestBody file,
+                @Part("feedId") RequestBody feedId,
                 @Part("userId") RequestBody userId,
                 @Part("title") RequestBody title,
                 @Part("content") RequestBody content,

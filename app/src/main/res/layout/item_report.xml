@@ -39,19 +39,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/WHITE"
-                android:text="경상북도 경주시 인왕동" />
+                android:text="" />
             <TextView
                 android:id="@+id/report_content_date"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignTop="@+id/report_content_img"
                 android:layout_alignRight="@+id/report_content_img"
-                android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/WHITE"
                 android:textSize="11dp"
-                android:text="2016.2.24" />
+                android:text="" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -82,7 +82,7 @@
                 android:layout_below="@+id/report_content_devider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="12dp">
 
                 <TextView
                     android:id="@+id/report_content_description"

@@ -16,4 +16,15 @@
     <dimen name="fab_margin">20dp</dimen>
 
     <dimen name="dialog_btn_height">47dp</dimen>
+
+    <!-- auth -->
+    <dimen name="symbol_width">60dp</dimen>
+    <dimen name="symbol_height">74dp</dimen>
+
+    <dimen name="auth_content_width">290dp</dimen>
+    <dimen name="auth_content_height">45dp</dimen>
+    <dimen name="auth_content_width_partial">200dp</dimen>
+    <dimen name="auth_content_width_side">100dp</dimen>
+    <dimen name="auth_ic_size">25dp</dimen>
+    <dimen name="auth_text_size">13dp</dimen>
 </resources>

@@ -23,13 +23,15 @@ public class AddReportHelper extends BasePresenter<AddMvpView> {
         super.detachView();
     }
 
-    public void saveReport(String title, String location, String content, RequestBody img) {
-        RequestBody requestBodyUserId = RequestBody.create(MediaType.parse("text/plain"), "1");
+    public void saveReport(int userId, int feedId, String title, String location, String content, RequestBody img) {
+        RequestBody requestBodyFeedId = RequestBody.create(MediaType.parse("text/plain"), feedId + "");
+        RequestBody requestBodyUserId = RequestBody.create(MediaType.parse("text/plain"), userId + "");
         RequestBody requestBodyTitle = RequestBody.create(MediaType.parse("text/plain"), title);
         RequestBody requestBodyContent = RequestBody.create(MediaType.parse("text/plain"), content);
         RequestBody requestBodyLocation = RequestBody.create(MediaType.parse("text/plain"), location);
 
-        getReportService().getReportApi().addReport(img, requestBodyUserId, requestBodyTitle, requestBodyContent, requestBodyLocation)
+        getReportService().getReportApi().addReport(img, requestBodyFeedId,
+                requestBodyUserId, requestBodyTitle, requestBodyContent, requestBodyLocation)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ReportDTO>() {

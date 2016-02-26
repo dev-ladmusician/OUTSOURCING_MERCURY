@@ -2,12 +2,10 @@ package com.goqual.mercury.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,7 @@ import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, RecyclerView.OnItemTouchListener {
+public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     private final String TAG = "ACTIVITY_MAIN";
     @BindString(R.string.EXTRA_TRIGGER_SYNC_FLAG)
     String EXTRA_TRIGGER_SYNC_FLAG;
@@ -36,20 +34,28 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
     RecyclerView mContainer;
     @Bind(R.id.main_total_count_feed)
     TextView mTxtFeedCount;
+    @Bind(R.id.main_title_user_name)
+    TextView mTitle;
     @Bind(R.id.fab_add_feed)
     com.melnykov.fab.FloatingActionButton mFabAddFeed;
+    @Bind(R.id.main_feed_no_report)
+    RelativeLayout mNoFeedTitle;
 
     private FeedPresenter mFeedPresenter = null;
     private FeedsAdapter mFeedAdapter = null;
-    private GestureDetectorCompat gestureDetector;
     private List<FeedDTO> mFeedList = null;
 
-    @OnClick(R.id.fab_add_feed)
+    @OnClick({R.id.fab_add_feed, R.id.main_logout})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab_add_feed:
                 Common.log(TAG, "FAB CLICK");
                 startActivity(new Intent(this, ActivityAddFeed.class));
+                break;
+            case R.id.main_logout:
+                getAppInfo().put(getString(R.string.USER_ID), -1);
+                startActivity(new Intent(this, ActivityAuth.class));
+                finish();
                 break;
             default:
                 break;
@@ -59,6 +65,7 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
     @Override
     public void showItems(List<FeedDTO> feeds) {
         Common.log(TAG, "SHOW FEEDS");
+        mNoFeedTitle.setVisibility(View.GONE);
         mFeedList = feeds;
         mTxtFeedCount.setText(mFeedList.size() + "");
         mFeedAdapter.setFeedList(mFeedList);
@@ -71,7 +78,6 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
         mTxtFeedCount.setText("0");
         mFeedAdapter.setFeedList(Collections.<FeedDTO>emptyList());
         mFeedAdapter.notifyDataSetChanged();
-        Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -98,55 +104,31 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        if (getAppInfo().getValue(getString(R.string.USER_ID), -1) == -1) {
+            startActivity(new Intent(this, ActivityAuth.class));
+            finish();
+        }
+        mTitle.setText(getAppInfo().getValue(getString(R.string.USER_NAME)));
+
         mFeedAdapter = new FeedsAdapter(this, getFeedPresenter());
         mFeedAdapter.setMode(Attributes.Mode.Single);
         mContainer.setAdapter(mFeedAdapter);
         mContainer.setLayoutManager(new LinearLayoutManager(this));
-        //mContainer.addOnItemTouchListener(this);
-        gestureDetector =
-                new GestureDetectorCompat(getApplicationContext(), new RecyclerViewDemoOnGestureListener());
         getFeedPresenter().attachView(this);
 
         mFabAddFeed.attachToRecyclerView(mContainer);
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
-        getFeedPresenter().loadFeeds();
+        getFeedPresenter().loadFeeds(getAppInfo().getValue(getString(R.string.USER_ID), -1));
     }
 
     @Override
     protected void onDestroy() {
         ButterKnife.unbind(this);
         super.onDestroy();
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-        gestureDetector.onTouchEvent(e);
-        return false;
-    }
-    @Override
-    public void onTouchEvent(RecyclerView rv, MotionEvent e) {}
-    @Override
-    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
-    private class RecyclerViewDemoOnGestureListener extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            View view = mContainer.findChildViewUnder(e.getX(), e.getY());
-            int position = mContainer.getChildAdapterPosition(view);
-            handleClickFeed(position);
-            return super.onSingleTapConfirmed(e);
-        }
-    }
-    private void handleClickFeed(int position) {
-        Intent intent = new Intent(this, ActivityDetailFeed.class);
-        intent.putExtra(getString(R.string.FEED_ID), mFeedList.get(position).get_feedid());
-        intent.putExtra(getString(R.string.FEED_TITLE), mFeedList.get(position).getTitle());
-        intent.putExtra(getString(R.string.FEED_PERIOD), mFeedList.get(position).getPeriod());
-        startActivity(intent);
     }
 
     private FeedPresenter getFeedPresenter() {

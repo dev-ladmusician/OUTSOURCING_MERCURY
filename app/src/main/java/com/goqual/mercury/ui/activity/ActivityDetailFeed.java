@@ -3,8 +3,11 @@ package com.goqual.mercury.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +19,7 @@ import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.presenter.ReportPresenter;
 import com.goqual.mercury.ui.adapter.ReportsAdapter;
 import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.DetailFeedMvpView;
+import com.goqual.mercury.ui.mvp.DetailMvpView;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +31,7 @@ import butterknife.OnClick;
 /**
  * Created by ladmusician on 2/24/16.
  */
-public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpView<ReportDTO> {
+public class ActivityDetailFeed extends BaseActivity implements DetailMvpView<ReportDTO>, RecyclerView.OnItemTouchListener {
     private final String TAG = "ACTIVITY_DETAIL_FEED";
     @Bind(R.id.detail_feed_report_container)
     RecyclerView mContainer;
@@ -43,12 +46,15 @@ public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpVie
     private ReportsAdapter mReportAdapter = null;
     private List<ReportDTO> mReportList = null;
     private FeedDTO mFeed = null;
+    private GestureDetectorCompat gestureDetector;
 
     @OnClick({R.id.detail_feed_btn_add_report, R.id.detail_feed_btn_back})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.detail_feed_btn_add_report:
-                startActivity(new Intent(this, ActivityAddReport.class));
+                Intent intent = new Intent(this, ActivityAddReport.class);
+                intent.putExtra(getString(R.string.FEED_ID), mFeed.get_feedid());
+                startActivity(intent);
                 break;
             case R.id.detail_feed_btn_back:
                 finish();
@@ -71,18 +77,6 @@ public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpVie
         mNoFeed.setVisibility(View.VISIBLE);
         mReportAdapter.setReportList(Collections.<ReportDTO>emptyList());
         mReportAdapter.notifyDataSetChanged();
-        //Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void showFeed(FeedDTO feed) {
-        mTitle.setText(feed.getTitle());
-        mPeriod.setText(feed.getPeriod());
-    }
-
-    @Override
-    public void showFeedError() {
-
     }
 
     @Override
@@ -91,6 +85,15 @@ public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpVie
         mReportAdapter.notifyDataSetChanged();
         Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void showItem(ReportDTO item) {}
+
+    @Override
+    public void onSuccessDelete() {}
+
+    @Override
+    public void onFailDelete() {}
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,14 +113,19 @@ public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpVie
         mReportAdapter = new ReportsAdapter(getApplicationContext());
         mContainer.setAdapter(mReportAdapter);
         mContainer.setLayoutManager(new LinearLayoutManager(this));
+        mContainer.addOnItemTouchListener(this);
+        gestureDetector =
+                new GestureDetectorCompat(getApplicationContext(), new RecyclerViewDemoOnGestureListener());
         getReportPresenter().attachView(this);
-        //getReportPresenter().getFeed();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getReportPresenter().loadReports();
+        getReportPresenter().loadReports(
+                getAppInfo().getValue(getString(R.string.USER_ID), -1),
+                mFeed.get_feedid()
+        );
     }
 
     @Override
@@ -127,7 +135,32 @@ public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpVie
     }
 
     private ReportPresenter getReportPresenter() {
-        if (nReportPresenter == null) nReportPresenter = new ReportPresenter(mFeed.get_feedid());
+        if (nReportPresenter == null) nReportPresenter = new ReportPresenter();
         return nReportPresenter;
+    }
+
+    private class RecyclerViewDemoOnGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            View view = mContainer.findChildViewUnder(e.getX(), e.getY());
+            int position = mContainer.getChildAdapterPosition(view);
+            handleItemClick(position);
+            return super.onSingleTapConfirmed(e);
+        }
+    }
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        gestureDetector.onTouchEvent(e);
+        return false;
+    }
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {}
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
+    private void handleItemClick(int position) {
+        Intent intent = new Intent(this, ActivityDetailReport.class);
+        intent.putExtra(getString(R.string.REPORT_ID), mReportList.get(position).get_reportid());
+        intent.putExtra(getString(R.string.REPORT_IMG_URL), mReportList.get(position).getImage_url());
+        startActivity(intent);
     }
 }

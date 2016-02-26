@@ -7,4 +7,10 @@
     <string name="FEED_ID">FEED_ID</string>
     <string name="FEED_TITLE">FEED_TITLE</string>
     <string name="FEED_PERIOD">FEED_PERIOD</string>
+
+    <string name="REPORT_ID">REPORT_ID</string>
+    <string name="REPORT_IMG_URL">REPORT_IMG_URL</string>
+
+    <string name="USER_ID">USER_ID</string>
+    <string name="USER_NAME">USER_NAME</string>
 </resources>

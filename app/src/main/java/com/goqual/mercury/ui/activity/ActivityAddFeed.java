@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.goqual.mercury.R;
 import com.goqual.mercury.helper.AddFeedHelper;
-import com.goqual.mercury.ui.mvp.AddMvpView;
 import com.goqual.mercury.ui.base.BaseActivity;
+import com.goqual.mercury.ui.mvp.AddMvpView;
 import com.goqual.mercury.util.Common;
-import com.goqual.mercury.util.Dialog;
 import com.goqual.mercury.util.Keyboard;
 
 import java.util.Calendar;
@@ -49,7 +49,7 @@ public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.On
             case R.id.add_feed_submit:
                 mTitle = mEditTitle.getText().toString();
                 if (!mTitle.equals(""))
-                    getAddFeedPresenter().saveFeed(mTitle, mStarted, mEnded);
+                    getAddFeedPresenter().saveFeed(getAppInfo().getValue(getString(R.string.USER_ID), -1), mTitle, mStarted, mEnded);
                 break;
             case R.id.add_feed_container:
                 Keyboard.hideSoftKeyboard(this);
@@ -76,22 +76,7 @@ public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.On
     @Override
     public void addFail() {
         Common.log(TAG, "FAIL TO ADD FEED");
-        Dialog.simpleDialog(mContext,
-                "게시물 추가 오류",
-                "게시물 추가하는데 오류가 발생했습니다.",
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Dialog.dismissDialog();
-                        getAddFeedPresenter().saveFeed(mTitle, mStarted, mEnded);
-                    }
-                },
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Dialog.dismissDialog();
-                    }
-                }, "저장");
+        Toast.makeText(this, R.string.ERROR_LOADING_FEEDS, Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -13,6 +13,14 @@ public class ReportDTO {
     private String date;
     private String image_url;
 
+    public ReportDTO() {
+    }
+
+    public ReportDTO(int _reportid, String imgurl) {
+        this._reportid = _reportid;
+        this.image_url = imgurl;
+    }
+
     public int get_reportid() {
         return _reportid;
     }
