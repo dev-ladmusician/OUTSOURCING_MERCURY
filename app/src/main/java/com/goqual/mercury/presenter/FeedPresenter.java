@@ -1,7 +1,7 @@
 package com.goqual.mercury.presenter;
 
 import com.goqual.mercury.data.local.FeedDTO;
-import com.goqual.mercury.ui.MvpView;
+import com.goqual.mercury.ui.mvp.MvpView;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
-import com.goqual.mercury.ui.MvpView;
+import com.goqual.mercury.ui.mvp.MvpView;
 import com.goqual.mercury.ui.adapter.FeedsAdapter;
 import com.goqual.mercury.ui.base.BaseActivity;
 import com.goqual.mercury.util.Common;
@@ -133,6 +133,8 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
     private void handleClickFeed(int position) {
         Intent intent = new Intent(this, ActivityDetailFeed.class);
         intent.putExtra(getString(R.string.FEED_ID), mFeedList.get(position).get_feedid());
+        intent.putExtra(getString(R.string.FEED_TITLE), mFeedList.get(position).getTitle());
+        intent.putExtra(getString(R.string.FEED_PERIOD), mFeedList.get(position).getPeriod());
         startActivity(intent);
     }
 

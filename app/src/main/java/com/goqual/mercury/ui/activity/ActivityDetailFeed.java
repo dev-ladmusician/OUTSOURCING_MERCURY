@@ -7,15 +7,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goqual.mercury.R;
+import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.presenter.ReportPresenter;
-import com.goqual.mercury.ui.MvpView;
 import com.goqual.mercury.ui.adapter.ReportsAdapter;
 import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.util.Common;
+import com.goqual.mercury.ui.mvp.DetailFeedMvpView;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,17 +28,21 @@ import butterknife.OnClick;
 /**
  * Created by ladmusician on 2/24/16.
  */
-public class ActivityDetailFeed extends BaseActivity implements MvpView<ReportDTO> {
+public class ActivityDetailFeed extends BaseActivity implements DetailFeedMvpView<ReportDTO> {
     private final String TAG = "ACTIVITY_DETAIL_FEED";
     @Bind(R.id.detail_feed_report_container)
     RecyclerView mContainer;
     @Bind(R.id.detail_feed_no_report)
     RelativeLayout mNoFeed;
+    @Bind(R.id.detail_feed_title)
+    TextView mTitle;
+    @Bind(R.id.detail_feed_period)
+    TextView mPeriod;
 
     private ReportPresenter nReportPresenter = null;
     private ReportsAdapter mReportAdapter = null;
     private List<ReportDTO> mReportList = null;
-    private int mFeedId;
+    private FeedDTO mFeed = null;
 
     @OnClick({R.id.detail_feed_btn_add_report, R.id.detail_feed_btn_back})
     void onClick(View v) {
@@ -70,6 +75,17 @@ public class ActivityDetailFeed extends BaseActivity implements MvpView<ReportDT
     }
 
     @Override
+    public void showFeed(FeedDTO feed) {
+        mTitle.setText(feed.getTitle());
+        mPeriod.setText(feed.getPeriod());
+    }
+
+    @Override
+    public void showFeedError() {
+
+    }
+
+    @Override
     public void showError() {
         mReportAdapter.setReportList(Collections.<ReportDTO>emptyList());
         mReportAdapter.notifyDataSetChanged();
@@ -82,13 +98,20 @@ public class ActivityDetailFeed extends BaseActivity implements MvpView<ReportDT
         setContentView(R.layout.activity_detail_feed);
         ButterKnife.bind(this);
 
-        mFeedId = getIntent().getIntExtra(getString(R.string.FEED_ID), -1);
-        Common.log(TAG, "FEED ID : " + mFeedId);
+        mFeed = new FeedDTO(
+                getIntent().getIntExtra(getString(R.string.FEED_ID), -1),
+                getIntent().getStringExtra(getString(R.string.FEED_TITLE)),
+                getIntent().getStringExtra(getString(R.string.FEED_PERIOD))
+        );
+
+        mTitle.setText(mFeed.getTitle());
+        mPeriod.setText(mFeed.getPeriod());
 
         mReportAdapter = new ReportsAdapter(getApplicationContext());
         mContainer.setAdapter(mReportAdapter);
         mContainer.setLayoutManager(new LinearLayoutManager(this));
         getReportPresenter().attachView(this);
+        //getReportPresenter().getFeed();
     }
 
     @Override
@@ -104,7 +127,7 @@ public class ActivityDetailFeed extends BaseActivity implements MvpView<ReportDT
     }
 
     private ReportPresenter getReportPresenter() {
-        if (nReportPresenter == null) nReportPresenter = new ReportPresenter(mFeedId);
+        if (nReportPresenter == null) nReportPresenter = new ReportPresenter(mFeed.get_feedid());
         return nReportPresenter;
     }
 }

@@ -45,15 +45,5 @@ public class ReportService {
                 @Part("content") RequestBody content,
                 @Part("location") RequestBody location
         );
-
-//        public interface ApiInterface {
-//            @Multipart
-//            @POST ("/api/Accounts/editaccount")
-//            Call<User> editUser (
-//                    @Header("Authorization") String authorization,
-//                    @Part("file\"; filename=\"pp.png\" ") RequestBody file ,
-//                    @Part("FirstName") RequestBody fname,
-//                    @Part("Id") RequestBody id);
-//        }
     }
 }
