@@ -2,17 +2,17 @@ package com.goqual.mercury.helper;
 
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.BasePresenter;
-import com.goqual.mercury.ui.AddFeedMvpView;
+import com.goqual.mercury.ui.AddMvpView;
 import com.goqual.mercury.util.Common;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class AddFeedHelper extends BasePresenter<AddFeedMvpView> {
+public class AddFeedHelper extends BasePresenter<AddMvpView> {
     private final String TAG = "PRESENTER_ADD_FEED";
     @Override
-    public void attachView(AddFeedMvpView mvpView) {
+    public void attachView(AddMvpView mvpView) {
         super.attachView(mvpView);
     }
 

@@ -27,7 +27,7 @@ import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements MvpView<FeedDTO>, RecyclerView.OnItemTouchListener {
+public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, RecyclerView.OnItemTouchListener {
     private final String TAG = "ACTIVITY_MAIN";
     @BindString(R.string.EXTRA_TRIGGER_SYNC_FLAG)
     String EXTRA_TRIGGER_SYNC_FLAG;
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements MvpView<FeedDTO>, Recy
         switch (v.getId()) {
             case R.id.fab_add_feed:
                 Common.log(TAG, "FAB CLICK");
-                startActivity(new Intent(this, AddFeedActivity.class));
+                startActivity(new Intent(this, ActivityAddFeed.class));
                 break;
             default:
                 break;
@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity implements MvpView<FeedDTO>, Recy
         }
     }
     private void handleClickFeed(int position) {
-        Intent intent = new Intent(this, DetailFeedActivity.class);
+        Intent intent = new Intent(this, ActivityDetailFeed.class);
         intent.putExtra(getString(R.string.FEED_ID), mFeedList.get(position).get_feedid());
         startActivity(intent);
     }

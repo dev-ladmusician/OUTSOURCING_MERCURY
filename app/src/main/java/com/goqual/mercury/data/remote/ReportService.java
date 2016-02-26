@@ -5,10 +5,11 @@ import com.goqual.mercury.data.local.ReportDTO;
 
 import java.util.List;
 
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import okhttp3.RequestBody;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -35,14 +36,24 @@ public class ReportService {
                 @Query("feedId") int feedId
         );
 
-        @FormUrlEncoded
-        @POST("api/report/add")
-        Observable<ReportDTO> addReport(
-                @Field("userId") int userId,
-                @Field("member") int member,
-                @Field("title") String title,
-                @Field("content") String content,
-                @Field("location") String location
+        @Multipart
+        @POST ("api/report/add")
+        Observable<ReportDTO> addReport (
+                @Part("img\"; filename=\"pp.png\" ") RequestBody file,
+                @Part("userId") RequestBody userId,
+                @Part("title") RequestBody title,
+                @Part("content") RequestBody content,
+                @Part("location") RequestBody location
         );
+
+//        public interface ApiInterface {
+//            @Multipart
+//            @POST ("/api/Accounts/editaccount")
+//            Call<User> editUser (
+//                    @Header("Authorization") String authorization,
+//                    @Part("file\"; filename=\"pp.png\" ") RequestBody file ,
+//                    @Part("FirstName") RequestBody fname,
+//                    @Part("Id") RequestBody id);
+//        }
     }
 }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.goqual.mercury.R;
 import com.goqual.mercury.helper.AddFeedHelper;
-import com.goqual.mercury.ui.AddFeedMvpView;
+import com.goqual.mercury.ui.AddMvpView;
 import com.goqual.mercury.ui.base.BaseActivity;
 import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Dialog;
@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddFeedActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener, AddFeedMvpView{
+public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.OnDateSetListener, AddMvpView {
     private final String TAG = "ACTIVITY_ADD_FEED";
     private String mStarted = "";
     private String mEnded = "";
@@ -139,7 +139,7 @@ public class AddFeedActivity extends BaseActivity implements DatePickerDialog.On
         if(mDatePicker == null) {
             Calendar now = Calendar.getInstance();
             mDatePicker = com.borax12.materialdaterangepicker.date.DatePickerDialog.newInstance(
-                    AddFeedActivity.this,
+                    ActivityAddFeed.this,
                     now.get(Calendar.YEAR),
                     now.get(Calendar.MONTH),
                     now.get(Calendar.DAY_OF_MONTH)

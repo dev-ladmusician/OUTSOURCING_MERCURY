@@ -11,7 +11,7 @@ public class ReportDTO {
     private String location;
     private String content;
     private String date;
-    private String imag_url;
+    private String image_url;
 
     public int get_reportid() {
         return _reportid;
@@ -69,11 +69,11 @@ public class ReportDTO {
         this.date = date;
     }
 
-    public String getImag_url() {
-        return imag_url;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setImag_url(String imag_url) {
-        this.imag_url = imag_url;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }

@@ -18,20 +18,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activity.ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.AddFeedActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activity.ActivityAddFeed"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.DetailFeedActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activity.ActivityDetailFeed"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.ActivityAddReport"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
         <service android:name=".service.SyncDataService"/>

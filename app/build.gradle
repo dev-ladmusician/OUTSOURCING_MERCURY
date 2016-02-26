@@ -23,11 +23,6 @@ android {
     }
 }
 
-repositories {
-    maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
-    maven { url "https://jitpack.io" }
-}
-
 dependencies {
     final SUPPORT_LIBRARY_VERSION = '23.1.1'
     final RETROFIT_VERSION = '2.0.0-beta4'
@@ -51,7 +46,6 @@ dependencies {
     // external library
     compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile 'com.borax12.materialdaterangepicker:library:1.6'
-    compile 'com.github.ParkSangGwon:TedPicker:v1.0.7'
 
     // Unit tests dependencies
     testCompile jUnit

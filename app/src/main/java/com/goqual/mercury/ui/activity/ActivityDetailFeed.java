@@ -1,5 +1,6 @@
 package com.goqual.mercury.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +27,7 @@ import butterknife.OnClick;
 /**
  * Created by ladmusician on 2/24/16.
  */
-public class DetailFeedActivity extends BaseActivity implements MvpView<ReportDTO> {
+public class ActivityDetailFeed extends BaseActivity implements MvpView<ReportDTO> {
     private final String TAG = "ACTIVITY_DETAIL_FEED";
     @Bind(R.id.detail_feed_report_container)
     RecyclerView mContainer;
@@ -42,7 +43,7 @@ public class DetailFeedActivity extends BaseActivity implements MvpView<ReportDT
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.detail_feed_btn_add_report:
-
+                startActivity(new Intent(this, ActivityAddReport.class));
                 break;
             case R.id.detail_feed_btn_back:
                 finish();
