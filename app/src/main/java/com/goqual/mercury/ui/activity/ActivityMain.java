@@ -11,12 +11,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.swipe.util.Attributes;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
-import com.goqual.mercury.ui.mvp.MvpView;
 import com.goqual.mercury.ui.adapter.FeedsAdapter;
 import com.goqual.mercury.ui.base.BaseActivity;
+import com.goqual.mercury.ui.mvp.MvpView;
 import com.goqual.mercury.util.Common;
 
 import java.util.Collections;
@@ -80,25 +81,35 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO>, Recy
     }
 
     @Override
+    public void onSuccessDelete(int position) {
+        mFeedList.remove(position);
+        mFeedAdapter.notifyItemRemoved(position);
+        mFeedAdapter.updateFeedList(mFeedList);
+    }
+
+    @Override
+    public void onFauleDelete() {
+        Common.log(TAG, "DELETE FEED FAIL!");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mFeedAdapter = new FeedsAdapter();
+        mFeedAdapter = new FeedsAdapter(this, getFeedPresenter());
+        mFeedAdapter.setMode(Attributes.Mode.Single);
         mContainer.setAdapter(mFeedAdapter);
         mContainer.setLayoutManager(new LinearLayoutManager(this));
-        mContainer.addOnItemTouchListener(this);
+        //mContainer.addOnItemTouchListener(this);
         gestureDetector =
                 new GestureDetectorCompat(getApplicationContext(), new RecyclerViewDemoOnGestureListener());
         getFeedPresenter().attachView(this);
 
         mFabAddFeed.attachToRecyclerView(mContainer);
-
-//        if (getIntent().getBooleanExtra(EXTRA_TRIGGER_SYNC_FLAG, true)) {
-//            startService(SyncDataService.getStartIntent(this));
-//        }
     }
+
 
     @Override
     protected void onResume() {

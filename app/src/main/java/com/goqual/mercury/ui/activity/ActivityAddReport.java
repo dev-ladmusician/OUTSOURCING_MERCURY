@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.goqual.mercury.R;
 import com.goqual.mercury.helper.AddReportHelper;
-import com.goqual.mercury.ui.AddMvpView;
+import com.goqual.mercury.ui.mvp.AddMvpView;
 import com.goqual.mercury.ui.base.BaseActivity;
 import com.goqual.mercury.util.Keyboard;
 

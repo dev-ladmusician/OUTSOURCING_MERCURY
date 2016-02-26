@@ -11,4 +11,7 @@ public interface MvpView<T> extends BaseMvpView {
     void showItems(List<T> items);
     void showEmptyItems();
     void showError();
+
+    void onSuccessDelete(int position);
+    void onFauleDelete();
 }

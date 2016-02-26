@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.goqual.mercury.R;
 import com.goqual.mercury.helper.AddFeedHelper;
-import com.goqual.mercury.ui.AddMvpView;
+import com.goqual.mercury.ui.mvp.AddMvpView;
 import com.goqual.mercury.ui.base.BaseActivity;
 import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Dialog;

@@ -33,6 +33,11 @@ public class FeedService {
         @GET("api/feed/gets")
         Observable<List<FeedDTO>> getFeeds();
 
+        @GET("api/feed/delete_by_id")
+        Observable<FeedDTO> deleteById(
+                @Query("feedId") int feedId
+        );
+
         @GET("api/feed/get_by_id")
         Observable<FeedDTO> getFeedById(
                 @Query("feedId") int feedId

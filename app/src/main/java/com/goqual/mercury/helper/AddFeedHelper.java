@@ -2,7 +2,7 @@ package com.goqual.mercury.helper;
 
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.BasePresenter;
-import com.goqual.mercury.ui.AddMvpView;
+import com.goqual.mercury.ui.mvp.AddMvpView;
 import com.goqual.mercury.util.Common;
 
 import rx.Observer;

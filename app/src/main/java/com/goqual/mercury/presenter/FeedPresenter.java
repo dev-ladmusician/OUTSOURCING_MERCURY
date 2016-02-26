@@ -22,6 +22,32 @@ public class FeedPresenter extends BasePresenter<MvpView>{
         super.detachView();
     }
 
+    public void deleteFeed(final int position, int feedId) {
+        getFeedService().getFeedApi().deleteById(feedId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<FeedDTO>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        getMvpView().onFauleDelete();
+                    }
+
+                    @Override
+                    public void onNext(FeedDTO feed) {
+                        if (feed != null && feed.get_feedid() != 0) {
+                            getMvpView().onSuccessDelete(position);
+                        } else {
+                            getMvpView().onFauleDelete();
+                        }
+                    }
+                });
+    }
+
     public void loadFeeds() {
         getFeedService().getFeedApi().getFeeds()
                 .subscribeOn(Schedulers.newThread())

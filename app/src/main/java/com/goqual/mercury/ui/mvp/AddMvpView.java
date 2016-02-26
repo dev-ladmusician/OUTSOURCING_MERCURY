@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui;
+package com.goqual.mercury.ui.mvp;
 
 import com.goqual.mercury.ui.base.BaseMvpView;
 
