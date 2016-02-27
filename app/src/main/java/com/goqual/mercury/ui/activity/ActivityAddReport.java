@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -141,7 +139,7 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != 0) {
-            if (requestCode == FLAG_CAMERA && !data.equals(null)) {
+            if (requestCode == FLAG_CAMERA && data != null) {
                 // create requestBody
                 Uri selectedImageUri = data.getData();
                 String realPath = getRealPathFromURI(selectedImageUri);
@@ -170,7 +168,11 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
                             }
                         })
                         .into(mImage);
+            } else {
+                finish();
             }
+        } else {
+            finish();
         }
     }
 

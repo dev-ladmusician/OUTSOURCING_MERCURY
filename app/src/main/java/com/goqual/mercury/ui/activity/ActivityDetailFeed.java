@@ -158,9 +158,11 @@ public class ActivityDetailFeed extends BaseActivity implements DetailMvpView<Re
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
     private void handleItemClick(int position) {
-        Intent intent = new Intent(this, ActivityDetailReport.class);
-        intent.putExtra(getString(R.string.REPORT_ID), mReportList.get(position).get_reportid());
-        intent.putExtra(getString(R.string.REPORT_IMG_URL), mReportList.get(position).getImage_url());
-        startActivity(intent);
+        if (position != -1 && mReportList != null) {
+            Intent intent = new Intent(this, ActivityDetailReport.class);
+            intent.putExtra(getString(R.string.REPORT_ID), mReportList.get(position).get_reportid());
+            intent.putExtra(getString(R.string.REPORT_IMG_URL), mReportList.get(position).getImage_url());
+            startActivity(intent);
+        }
     }
 }

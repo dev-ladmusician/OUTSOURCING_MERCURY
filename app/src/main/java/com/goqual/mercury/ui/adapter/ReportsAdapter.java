@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.ReportDTO;
+import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Constant;
 
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportsV
             mContent.setText(report.getContent());
             mPosition.setText(report.getLocation());
             mDate.setText(report.getDate());
+            Common.log("test", Constant.IMG_BASE_URL + report.getImage_url());
             Glide.with(mContext)
                     .load(Constant.IMG_BASE_URL + report.getImage_url())
                     .into(mImage);

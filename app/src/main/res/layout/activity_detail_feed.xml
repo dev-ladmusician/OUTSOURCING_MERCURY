@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="기록하시겠습니다?"/>
+                android:text="기록하시겠습니까?"/>
         </RelativeLayout>
 
         <RelativeLayout

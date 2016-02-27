@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -77,8 +76,8 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
         TextView mPeriod;
         @Bind(R.id.feed_item_container)
         SwipeLayout mFeedItemContainer;
-        @Bind(R.id.feed_swipe_menu_edit)
-        TextView mSwipeMenuEdit;
+//        @Bind(R.id.feed_swipe_menu_edit)
+//        TextView mSwipeMenuEdit;
         @Bind(R.id.feed_swipe_menu_delete)
         TextView mSwipeMenuDelete;
         @Bind(R.id.feed_swipe_menu_container)
@@ -108,12 +107,12 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
                 }
             });
 
-            mSwipeMenuEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(view.getContext(), "Clicked on Share ", Toast.LENGTH_SHORT).show();
-                }
-            });
+//            mSwipeMenuEdit.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Toast.makeText(view.getContext(), "Clicked on Share ", Toast.LENGTH_SHORT).show();
+//                }
+//            });
 
             mSwipeMenuDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

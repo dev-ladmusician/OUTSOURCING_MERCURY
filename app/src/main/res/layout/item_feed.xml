@@ -13,18 +13,18 @@
         android:id="@+id/feed_swipe_menu_container"
         android:layout_width="160dp"
         android:layout_height="match_parent"
-        android:weightSum="2">
+        android:weightSum="1">
 
-        <TextView
-            android:id="@+id/feed_swipe_menu_edit"
-            android:layout_width="0dp"
-            android:layout_height="69dp"
-            android:layout_weight="1"
-            android:background="#bdbdbd"
-            android:gravity="center"
-            android:text="수정"
-            android:textStyle="bold"
-            android:textColor="#fff" />
+        <!--<TextView-->
+            <!--android:id="@+id/feed_swipe_menu_edit"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="69dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#bdbdbd"-->
+            <!--android:gravity="center"-->
+            <!--android:text="수정"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="#fff" />-->
 
         <TextView
             android:id="@+id/feed_swipe_menu_delete"
