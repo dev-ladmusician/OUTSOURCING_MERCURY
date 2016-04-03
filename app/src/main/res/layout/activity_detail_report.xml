@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -19,9 +20,9 @@
                 android:id="@+id/detail_report_btn_back"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/btn_back"/>
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/btn_back" />
 
             <Button
                 android:id="@+id/detail_report_btn_delete"
@@ -30,8 +31,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@color/TRANSPARENT"
-                android:textColor="@color/WHITE"
-                android:text="삭제"/>
+                android:text="삭제"
+                android:textColor="@color/WHITE" />
         </RelativeLayout>
 
         <ScrollView
@@ -42,8 +43,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -55,45 +56,48 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/img_test"/>
+                        android:src="@drawable/img_test" />
 
                     <ImageView
                         android:id="@+id/report_img_position"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_alignTop="@+id/report_content_img"
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
-                        android:src="@drawable/ic_position"/>
+                        android:layout_alignTop="@+id/report_content_img"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="13dp"
+                        android:src="@drawable/ic_position" />
+
                     <TextView
-                        android:id="@+id/report_content_position"
-                        android:layout_marginTop="10dp"
+                        android:id="@+id/report_content_geo_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_toRightOf="@+id/report_img_position"
                         android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:text=""
                         android:textColor="@color/WHITE"
-                        android:text="" />
+                        android:textSize="11dp" />
+
                     <TextView
                         android:id="@+id/report_content_date"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_alignTop="@+id/report_content_img"
-                        android:layout_alignRight="@+id/report_content_img"
-                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignRight="@+id/report_content_img"
+                        android:layout_alignTop="@+id/report_content_img"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:text=""
                         android:textColor="@color/WHITE"
-                        android:textSize="11dp"
-                        android:text="" />
+                        android:textSize="11dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="30dp"
                     android:layout_weight="2">
 
                     <TextView
@@ -101,31 +105,51 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:textSize="15dp"
                         android:text="아이들과 첨성대 앞에서"
-                        android:textColor="#222"/>
+                        android:textColor="#222"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_content_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:textSize="13dp"
+                        android:layout_alignParentRight="true"
+                        android:text="첨성대"
+                        android:textColor="@color/TEXT_COLOR"/>
 
                     <ImageView
                         android:id="@+id/report_content_devider"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@+id/report_content_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/line_report_content_devider"/>
+                        android:layout_below="@+id/report_content_title"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/line_report_content_devider" />
 
                     <RelativeLayout
-                        android:layout_below="@+id/report_content_devider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/report_content_devider"
                         android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/report_content_creator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="촬영자: 김동진 선생님"
+                            android:textColor="@color/TEXT_COLOR"
+                            android:textSize="10dp" />
 
                         <TextView
                             android:id="@+id/report_content_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/report_content_creator"
+                            android:layout_marginTop="10dp"
                             android:text="아이들과 첨성대 앞에서"
-                            android:textSize="12dp"
-                            android:textColor="@color/TEXT_COLOR"/>
+                            android:textColor="@color/TEXT_COLOR"
+                            android:textSize="12dp" />
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>

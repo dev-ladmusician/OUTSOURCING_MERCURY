@@ -95,7 +95,6 @@
                 android:layout_height="wrap_content"
                 android:padding="12dp">
 
-
                 <TextView
                     android:id="@+id/report_content_creator"
                     android:layout_width="wrap_content"
@@ -103,7 +102,6 @@
                     android:textSize="10dp"
                     android:text="촬영자: 김동진 선생님"
                     android:textColor="@color/TEXT_COLOR"/>
-
 
                 <TextView
                     android:id="@+id/report_content_description"

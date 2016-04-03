@@ -34,6 +34,10 @@ public class ActivityDetailReport extends BaseActivity implements DetailMvpView<
     TextView mContent;
     @Bind(R.id.report_content_position)
     TextView mPosition;
+    @Bind(R.id.report_content_geo_position)
+    TextView mGeoPosition;
+    @Bind(R.id.report_content_creator)
+    TextView mCreator;
     @Bind(R.id.report_content_date)
     TextView mDate;
     @Bind(R.id.report_content_img)
@@ -61,6 +65,8 @@ public class ActivityDetailReport extends BaseActivity implements DetailMvpView<
         mContent.setText(item.getContent());
         mPosition.setText(item.getLocation());
         mDate.setText(item.getDate());
+        mGeoPosition.setText(item.getGeo_location());
+        mCreator.setText("촬영자 : " + item.getCreator());
     }
 
     @Override
