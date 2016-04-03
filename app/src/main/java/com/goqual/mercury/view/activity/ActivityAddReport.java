@@ -39,6 +39,7 @@ import okhttp3.RequestBody;
  * Created by ladmusician on 2/25/16.
  */
 public class ActivityAddReport extends BaseActivity implements AddMvpView {
+    private static final int RESULT_CODE = 0;
     private final String TAG = "ACTIVITY_ADD_REPORT";
     private final int FLAG_CAMERA = 1;
 
@@ -77,6 +78,7 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
     @Override
     public void addSuccess(int reportId) {
         if (reportId > 0) {
+            setResult(RESULT_CODE);
             finish();
         }
     }

@@ -108,7 +108,6 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
 
             if (feed.getMain_img_url() != null &&
                     !feed.getMain_img_url().isEmpty()) {
-                Common.log(TAG, Constant.IMG_BASE_URL + feed.getMain_img_url());
 
                 Glide.with(mContext)
                         .load(Constant.IMG_BASE_URL + feed.getMain_img_url())

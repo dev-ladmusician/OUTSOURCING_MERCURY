@@ -46,6 +46,9 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     private FeedPresenter mFeedPresenter = null;
     private FeedsAdapter mFeedAdapter = null;
     private List<FeedDTO> mFeedList = null;
+    private int REQUEST_CODE = 0;
+    private int RESULT_CODE = 0;
+    private FloatingActionsMenu floatingMenu;
 
     @OnClick({R.id.main_logout})
     void onClick(View v) {
@@ -118,8 +121,12 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
         getFeedPresenter().attachView(this);
 
 
-        FloatingActionsMenu floatingMenu =
-                (com.getbase.floatingactionbutton.FloatingActionsMenu)findViewById(R.id.fab_container);
+        init();
+    }
+
+    private void init() {
+        floatingMenu =
+                (FloatingActionsMenu)findViewById(R.id.fab_container);
         ((FloatingActionsMenu)floatingMenu).setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
@@ -150,21 +157,28 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
         addReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ActivityAddReport.class));
+                Intent intent = new Intent(getApplicationContext(), ActivityAddReport.class);
+                intent.putExtra(getString(R.string.FEED_ID), mFeedList.get(0).get_feedid());
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
-
-
-        //mFabAddFeed.attachToRecyclerView(mContainer);
     }
 
-    void handleClickFab() {
-        startActivity(new Intent(this, ActivityAddFeed.class));
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE) {
+            Intent intent = new Intent(getApplicationContext(), ActivityDetailFeed.class);
+            intent.putExtra(getString(R.string.FEED_ID), mFeedList.get(0).get_feedid());
+            intent.putExtra(getString(R.string.FEED_TITLE), mFeedList.get(0).getTitle());
+            intent.putExtra(getString(R.string.FEED_PERIOD), mFeedList.get(0).getPeriod());
+            startActivity(intent);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        floatingMenu.collapse();
         getFeedPresenter().loadFeeds(getAppInfo().getValue(getString(R.string.USER_ID), -1));
     }
 
