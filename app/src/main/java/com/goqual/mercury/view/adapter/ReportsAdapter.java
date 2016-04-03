@@ -59,8 +59,12 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportsV
         TextView mContent;
         @Bind(R.id.report_content_position)
         TextView mPosition;
+        @Bind(R.id.report_content_geo_position)
+        TextView mGeoPosition;
         @Bind(R.id.report_content_date)
         TextView mDate;
+        @Bind(R.id.report_content_creator)
+        TextView mCreator;
         @Bind(R.id.report_content_img)
         ImageView mImage;
 
@@ -73,6 +77,8 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportsV
             mTitle.setText(report.getTitle());
             mContent.setText(report.getContent());
             mPosition.setText(report.getLocation());
+            mGeoPosition.setText(report.getGeo_location());
+            mCreator.setText("촬영자 : " + report.getCreator());
             mDate.setText(report.getDate());
             Common.log("test", Constant.IMG_BASE_URL + report.getImage_url());
             Glide.with(mContext)

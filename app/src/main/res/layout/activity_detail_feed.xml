@@ -18,10 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/detail_feed_btn_back"
                     android:layout_width="20dp"
@@ -29,33 +31,44 @@
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="25dp"
                     android:src="@drawable/btn_back"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="@dimen/main_title_container_padding_side"
-                android:paddingRight="@dimen/main_title_container_padding_side"
-                android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/detail_feed_title"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="9월 경주체험학습"
-                    android:textStyle="bold"
-                    android:textColor="@color/WHITE"
-                    android:textSize="25dp"/>
+                    android:layout_centerInParent="true">
 
-                <TextView
-                    android:id="@+id/detail_feed_period"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/detail_feed_title"
-                    android:text="2015.09.08"
-                    android:textStyle="bold"
-                    android:textColor="@color/WHITE"
-                    android:textSize="15dp"/>
+                    <TextView
+                        android:id="@+id/detail_feed_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9월 경주체험학습"
+                        android:textStyle="bold"
+                        android:textColor="@color/WHITE"
+                        android:textSize="25dp"/>
+
+                    <TextView
+                        android:id="@+id/detail_feed_period"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detail_feed_title"
+                        android:layout_centerHorizontal="true"
+                        android:text="2015.09.08"
+                        android:textStyle="bold"
+                        android:textColor="@color/WHITE"
+                        android:textSize="13dp"/>
+
+                    <TextView
+                        android:id="@+id/detail_feed_total_student"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detail_feed_period"
+                        android:layout_centerHorizontal="true"
+                        android:text="총 15명"
+                        android:textStyle="bold"
+                        android:textColor="@color/FEED_COUNT"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"/>
+                </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

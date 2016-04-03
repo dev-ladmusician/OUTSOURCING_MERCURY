@@ -12,6 +12,8 @@ public class ReportDTO {
     private String content;
     private String date;
     private String image_url;
+    private String geo_location;
+    private String creator;
 
     public ReportDTO() {
     }
@@ -83,5 +85,21 @@ public class ReportDTO {
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
+    }
+
+    public String getGeo_location() {
+        return geo_location;
+    }
+
+    public void setGeo_location(String geo_location) {
+        this.geo_location = geo_location;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 }

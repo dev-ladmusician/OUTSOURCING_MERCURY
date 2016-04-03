@@ -210,6 +210,7 @@ public class ActivityAddReport extends BaseActivity
                             mTitle.getText().toString(),
                             mLocation.getText().toString(),
                             mContent.getText().toString(),
+                            currentLocationAddress,
                             mImageRequestBody);
                 } else {
                     Toast.makeText(this, "내용을 입력해주세요.", Toast.LENGTH_LONG).show();

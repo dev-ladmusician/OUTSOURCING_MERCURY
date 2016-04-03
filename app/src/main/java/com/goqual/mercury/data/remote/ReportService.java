@@ -55,7 +55,8 @@ public class ReportService {
                 @Part("userId") RequestBody userId,
                 @Part("title") RequestBody title,
                 @Part("content") RequestBody content,
-                @Part("location") RequestBody location
+                @Part("location") RequestBody location,
+                @Part("geoLocation") RequestBody geoLocation
         );
     }
 }

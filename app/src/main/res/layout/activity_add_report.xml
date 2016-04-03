@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/add_report_container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_report_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,84 +23,182 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/btn_back"/>
+                android:src="@drawable/btn_back" />
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:padding="20dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:background="@color/BG_BASE">
-           <ScrollView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical">
+        android:background="@color/WHITE"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-               <ImageView
-                   android:id="@+id/add_report_img"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="fill"
-                   android:scaleType="fitStart"
-                   android:src="@drawable/img_test"
-                   android:layout_marginBottom="10dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@drawable/style_border_bottom"
+            android:paddingBottom="10dp">
 
-               <EditText
-                   android:id="@+id/add_report_title"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:hint="제목을 입력하세요."
-                   android:textColorHint="@color/IDENTITY_BLUE"
-                   android:textColor="@color/IDENTITY_BLUE"
-                   android:textSize="15dp"
-                   android:paddingLeft="15dp"
-                   android:layout_marginBottom="10dp"
-                   android:background="@drawable/style_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
-               <EditText
-                   android:id="@+id/add_report_location"
-                   android:layout_below="@+id/add_report_title"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:hint="위치를 입력해주세요."
-                   android:textColorHint="@color/IDENTITY_BLUE"
-                   android:textColor="@color/IDENTITY_BLUE"
-                   android:textSize="15dp"
-                   android:paddingLeft="15dp"
-                   android:layout_marginBottom="10dp"
-                   android:background="@drawable/style_content"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30">
 
-               <EditText
-                   android:id="@+id/add_report_content"
-                   android:layout_below="@+id/add_report_location"
-                   android:layout_width="match_parent"
-                   android:layout_height="200dp"
-                   android:hint="간단한 내용을 입력하세요."
-                   android:gravity="top"
-                   android:textColorHint="@color/IDENTITY_BLUE"
-                   android:textColor="@color/IDENTITY_BLUE"
-                   android:textSize="15dp"
-                   android:paddingLeft="15dp"
-                   android:paddingTop="15dp"
-                   android:layout_marginBottom="10dp"
-                   android:background="@drawable/style_content"/>
+                    <ImageView
+                        android:id="@+id/add_report_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="fill"
+                        android:src="@drawable/img_test" />
+                </RelativeLayout>
 
-                   <Button
-                       android:id="@+id/add_report_submit"
-                       android:layout_below="@+id/add_report_location"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_alignParentBottom="true"
-                       android:layout_marginBottom="10dp"
-                       android:textColor="@color/LIGHT_BLUE"
-                       android:background="@drawable/style_btn"
-                       android:text="추가하기"/>
-               </LinearLayout>
-           </ScrollView>
-    </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70">
+
+                    <EditText
+                        android:id="@+id/add_report_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/style_report_content"
+                        android:hint="간단한 내용을 작성해주세요."
+                        android:paddingLeft="15dp"
+                        android:textColorHint="@color/TEXT_COLOR"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <EditText
+                    android:id="@+id/add_report_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="제목"
+                    android:textColorHint="@color/TEXT_COLOR"
+                    android:singleLine="true"/>
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <EditText
+                    android:id="@+id/add_report_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="장소"
+                    android:textColorHint="@color/TEXT_COLOR"
+                    android:singleLine="true"/>
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50">
+
+
+            <Button
+                android:id="@+id/add_report_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/LIGHT_BLUE"
+                android:background="@drawable/style_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="추가하기"/>
+        </RelativeLayout>
+        <!--<ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+            <EditText
+                android:id="@+id/add_report_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="제목을 입력하세요."
+                android:textColorHint="@color/IDENTITY_BLUE"
+                android:textColor="@color/IDENTITY_BLUE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/style_content"/>
+
+            <EditText
+                android:id="@+id/add_report_location"
+                android:layout_below="@+id/add_report_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="위치를 입력해주세요."
+                android:textColorHint="@color/IDENTITY_BLUE"
+                android:textColor="@color/IDENTITY_BLUE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/style_content"/>
+
+            <EditText
+                android:id="@+id/add_report_content"
+                android:layout_below="@+id/add_report_location"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:hint="간단한 내용을 입력하세요."
+                android:gravity="top"
+                android:textColorHint="@color/IDENTITY_BLUE"
+                android:textColor="@color/IDENTITY_BLUE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/style_content"/>
+
+                <Button
+                    android:id="@+id/add_report_submit"
+                    android:layout_below="@+id/add_report_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/LIGHT_BLUE"
+                    android:background="@drawable/style_btn"
+                    android:text="추가하기"/>
+            </LinearLayout>
+        </ScrollView>-->
+    </LinearLayout>
 </LinearLayout>
