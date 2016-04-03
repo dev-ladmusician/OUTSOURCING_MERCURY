@@ -11,8 +11,10 @@
 
     <LinearLayout
         android:id="@+id/feed_swipe_menu_container"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
+        android:paddingTop="@dimen/feed_upper_padding"
+        android:paddingBottom="@dimen/feed_upper_padding"
         android:weightSum="1">
 
         <!--<TextView-->
@@ -29,7 +31,7 @@
         <TextView
             android:id="@+id/feed_swipe_menu_delete"
             android:layout_width="0dp"
-            android:layout_height="69dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#F44336"
             android:gravity="center"
@@ -54,8 +56,19 @@
             android:layout_height="match_parent"
             android:background="@color/FEED_BG">
 
-            <RelativeLayout
+            <ImageView
                 android:id="@+id/feed_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:id="@+id/feed_bg_transparend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="#66000000"/>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true">

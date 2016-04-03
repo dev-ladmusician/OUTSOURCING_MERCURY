@@ -8,6 +8,7 @@ public class FeedDTO {
     private int id;
     private String title;
     private String period;
+    private String main_img_url;
 
     public FeedDTO() {}
 
@@ -51,5 +52,13 @@ public class FeedDTO {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public String getMain_img_url() {
+        return main_img_url;
+    }
+
+    public void setMain_img_url(String main_img_url) {
+        this.main_img_url = main_img_url;
     }
 }

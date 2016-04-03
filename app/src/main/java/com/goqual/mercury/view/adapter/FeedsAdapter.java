@@ -2,19 +2,32 @@ package com.goqual.mercury.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
+import com.goqual.mercury.util.Common;
+import com.goqual.mercury.util.Constant;
 import com.goqual.mercury.view.activity.ActivityDetailFeed;
 
 import java.util.ArrayList;
@@ -27,6 +40,7 @@ import butterknife.ButterKnife;
  * Created by ladmusician on 2/24/16.
  */
 public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHolder> {
+    private static final String TAG = "ADAPTER_FEED";
     private List<FeedDTO> mFeedList = null;
     private Context mContext = null;
     private FeedPresenter mFeedPresenter = null;
@@ -72,10 +86,12 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
         TextView mTitle;
         @Bind(R.id.feed_period)
         TextView mPeriod;
+        @Bind(R.id.feed_bg)
+        ImageView mBg;
+        @Bind(R.id.feed_bg_transparend)
+        RelativeLayout mBgTransparent;
         @Bind(R.id.feed_item_container)
         SwipeLayout mFeedItemContainer;
-//        @Bind(R.id.feed_swipe_menu_edit)
-//        TextView mSwipeMenuEdit;
         @Bind(R.id.feed_swipe_menu_delete)
         TextView mSwipeMenuDelete;
         @Bind(R.id.feed_swipe_menu_container)
@@ -89,6 +105,18 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
         public void bindView(final int position, FeedDTO feed) {
             mTitle.setText(feed.getTitle());
             mPeriod.setText(feed.getPeriod());
+
+            if (feed.getMain_img_url() != null &&
+                    !feed.getMain_img_url().isEmpty()) {
+                Common.log(TAG, Constant.IMG_BASE_URL + feed.getMain_img_url());
+
+                Glide.with(mContext)
+                        .load(Constant.IMG_BASE_URL + feed.getMain_img_url())
+                        .centerCrop()
+                        .into(mBg);
+
+                mBgTransparent.setVisibility(View.VISIBLE);
+            }
 
             mFeedItemContainer.setShowMode(SwipeLayout.ShowMode.PullOut);
             mFeedItemContainer.addDrag(SwipeLayout.DragEdge.Right, mFeedItemContainer.findViewById(R.id.feed_swipe_menu_container));
