@@ -1,13 +1,19 @@
 package com.goqual.mercury.view.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
@@ -19,15 +25,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.helper.AddReportHelper;
-import com.goqual.mercury.view.base.BaseActivity;
-import com.goqual.mercury.view.mvp.AddMvpView;
+import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Dialog;
 import com.goqual.mercury.util.Keyboard;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.AddMvpView;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,7 +51,8 @@ import okhttp3.RequestBody;
 /**
  * Created by ladmusician on 2/25/16.
  */
-public class ActivityAddReport extends BaseActivity implements AddMvpView {
+public class ActivityAddReport extends BaseActivity
+        implements AddMvpView, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final int RESULT_CODE = 0;
     private final String TAG = "ACTIVITY_ADD_REPORT";
     private final int FLAG_CAMERA = 1;
@@ -59,6 +73,12 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
     private AddReportHelper mAddReportHelper = null;
     private RequestBody mImageRequestBody = null;
     private FeedDTO mFeed = null;
+
+    private Location mLastLocation;
+    private double mLatitude;
+    private double mLongitude;
+    private GoogleApiClient mGoogleApiClient;
+    private String currentLocationAddress;
 
     @OnClick({R.id.add_report_btn_back, R.id.add_report_submit, R.id.add_report_container})
     void onClick(View v) {
@@ -88,6 +108,98 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
         Toast.makeText(this, "게시물 작성하는데 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        Common.log(TAG, "GOOGLE PLAY SERVICE CONNECTED");
+        if(Build.VERSION.SDK_INT >= 23) {
+            checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+            mLatitude = mLastLocation.getLatitude();
+            mLongitude = mLastLocation.getLongitude();
+        }
+
+        Geocoder geocoder = new Geocoder(this, Locale.KOREA);
+        List<Address> address = null;
+        try {
+            if (geocoder != null) {
+                try {
+                    address = geocoder.getFromLocation(mLatitude, mLongitude, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (address != null && address.size() > 0) {
+                    currentLocationAddress = address.get(0).getAddressLine(0).toString();
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "주소취득 실패", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        } finally {
+            Common.log(TAG, "ADDRESS : " + currentLocationAddress);
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Common.log(TAG, "GOOGLE PLAY SERVICE CONNECTION SUSPENDED");
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Common.log(TAG, "GOOGLE PLAY SERVICE CONNECTION FAIL");
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_report);
+        ButterKnife.bind(this);
+        getAddReportPresenter().attachView(this);
+        mContext = getApplicationContext();
+
+        mFeed = new FeedDTO(
+                getIntent().getIntExtra(getString(R.string.FEED_ID), -1)
+        );
+
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        startActivityForResult(cameraIntent, FLAG_CAMERA);
+    }
+
+    @Override
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
+    }
+
     private void saveReport() {
         if (mTitle.getText().length() != 0) {
             if (mLocation.getText().length() != 0) {
@@ -110,38 +222,11 @@ public class ActivityAddReport extends BaseActivity implements AddMvpView {
         }
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_report);
-        ButterKnife.bind(this);
-        getAddReportPresenter().attachView(this);
-        mContext = getApplicationContext();
-
-        mFeed = new FeedDTO(
-                getIntent().getIntExtra(getString(R.string.FEED_ID), -1)
-        );
-
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        startActivityForResult(cameraIntent, FLAG_CAMERA);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        ButterKnife.unbind(this);
-        super.onDestroy();
-    }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != 0) {
             if (requestCode == FLAG_CAMERA && data != null) {
+
                 // create requestBody
                 Uri selectedImageUri = data.getData();
                 String realPath = getRealPathFromURI(selectedImageUri);

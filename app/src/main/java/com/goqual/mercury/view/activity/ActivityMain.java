@@ -2,7 +2,6 @@ package com.goqual.mercury.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,10 +14,10 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
+import com.goqual.mercury.util.Common;
 import com.goqual.mercury.view.adapter.FeedsAdapter;
 import com.goqual.mercury.view.base.BaseActivity;
 import com.goqual.mercury.view.mvp.MvpView;
-import com.goqual.mercury.util.Common;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,8 +35,6 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     RecyclerView mContainer;
     @Bind(R.id.main_total_count_feed)
     TextView mTxtFeedCount;
-//    @Bind(R.id.fab_add_feed)
-//    com.melnykov.fab.FloatingActionButton mFabAddFeed;
     @Bind(R.id.fab_expand_transparent)
     RelativeLayout mFabTransparent;
     @Bind(R.id.main_feed_no_report)
@@ -48,15 +45,11 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     private List<FeedDTO> mFeedList = null;
     private int REQUEST_CODE = 0;
     private int RESULT_CODE = 0;
-    private FloatingActionsMenu floatingMenu;
+    private FloatingActionsMenu mFloatingMenu;
 
     @OnClick({R.id.main_logout})
     void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.fab_add_feed:
-//                Common.log(TAG, "FAB CLICK");
-//                startActivity(new Intent(this, ActivityAddFeed.class));
-//                break;
             case R.id.main_logout:
                 getAppInfo().put(getString(R.string.USER_ID), -1);
                 startActivity(new Intent(this, ActivityAuth.class));
@@ -99,7 +92,7 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     }
 
     @Override
-    public void onFauleDelete() {
+    public void onFailDelete() {
         Common.log(TAG, "DELETE FEED FAIL!");
     }
 
@@ -120,14 +113,13 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
         mContainer.setLayoutManager(new LinearLayoutManager(this));
         getFeedPresenter().attachView(this);
 
-
         init();
     }
 
     private void init() {
-        floatingMenu =
+        mFloatingMenu =
                 (FloatingActionsMenu)findViewById(R.id.fab_container);
-        ((FloatingActionsMenu)floatingMenu).setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+        mFloatingMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
                 mFabTransparent.setVisibility(View.VISIBLE);
@@ -178,7 +170,7 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     @Override
     protected void onResume() {
         super.onResume();
-        floatingMenu.collapse();
+        mFloatingMenu.collapse();
         getFeedPresenter().loadFeeds(getAppInfo().getValue(getString(R.string.USER_ID), -1));
     }
 

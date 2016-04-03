@@ -13,5 +13,5 @@ public interface MvpView<T> extends BaseMvpView {
     void showError();
 
     void onSuccessDelete(int position);
-    void onFauleDelete();
+    void onFailDelete();
 }

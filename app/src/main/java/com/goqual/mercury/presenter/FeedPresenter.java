@@ -34,7 +34,7 @@ public class FeedPresenter extends BasePresenter<MvpView>{
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        getMvpView().onFauleDelete();
+                        getMvpView().onFailDelete();
                     }
 
                     @Override
@@ -42,7 +42,7 @@ public class FeedPresenter extends BasePresenter<MvpView>{
                         if (feed != null && feed.get_feedid() != 0) {
                             getMvpView().onSuccessDelete(position);
                         } else {
-                            getMvpView().onFauleDelete();
+                            getMvpView().onFailDelete();
                         }
                     }
                 });
