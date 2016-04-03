@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -83,16 +83,48 @@
             android:paddingTop="@dimen/feed_upper_padding"
             android:paddingBottom="@dimen/feed_upper_padding"></android.support.v7.widget.RecyclerView>
 
-        <com.melnykov.fab.FloatingActionButton
-            android:id="@+id/fab_add_feed"
+
+        <RelativeLayout
+            android:id="@+id/fab_expand_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/BLACK_TRANSPARENT">
+        </RelativeLayout>
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_width="@dimen/fab_size_normal"
-            android:layout_height="@dimen/fab_size_normal"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_add_feed"
-            fab:fab_colorNormal="#EBEBEB"
-            fab:fab_colorPressed="@color/LIGHT_BLUE_TRANSPARENT"
-            fab:fab_colorRipple="#85B7DE" />
+            android:layout_alignParentEnd="true"
+            fab:fab_addButtonColorNormal="#75A0CE"
+            fab:fab_addButtonColorPressed="#75A0CE"
+            fab:fab_addButtonPlusIconColor="@color/WHITE"
+            fab:fab_labelStyle="@style/menu_labels_style"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="#75A0CE"
+                fab:fab_colorPressed="#75A0CE"
+                fab:fab_title="사진 찍기"
+                fab:fab_icon="@drawable/ic_add_report"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add_feed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="#75A0CE"
+                fab:fab_colorPressed="#75A0CE"
+                fab:fab_title="앨범 추가"
+                fab:fab_icon="@drawable/ic_add_feed" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </RelativeLayout>
 </LinearLayout>

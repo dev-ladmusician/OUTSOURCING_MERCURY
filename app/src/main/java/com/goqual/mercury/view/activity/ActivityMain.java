@@ -2,6 +2,7 @@ package com.goqual.mercury.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.swipe.util.Attributes;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
@@ -34,8 +36,10 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     RecyclerView mContainer;
     @Bind(R.id.main_total_count_feed)
     TextView mTxtFeedCount;
-    @Bind(R.id.fab_add_feed)
-    com.melnykov.fab.FloatingActionButton mFabAddFeed;
+//    @Bind(R.id.fab_add_feed)
+//    com.melnykov.fab.FloatingActionButton mFabAddFeed;
+    @Bind(R.id.fab_expand_transparent)
+    RelativeLayout mFabTransparent;
     @Bind(R.id.main_feed_no_report)
     RelativeLayout mNoFeedTitle;
 
@@ -43,13 +47,13 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     private FeedsAdapter mFeedAdapter = null;
     private List<FeedDTO> mFeedList = null;
 
-    @OnClick({R.id.fab_add_feed, R.id.main_logout})
+    @OnClick({R.id.main_logout})
     void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fab_add_feed:
-                Common.log(TAG, "FAB CLICK");
-                startActivity(new Intent(this, ActivityAddFeed.class));
-                break;
+//            case R.id.fab_add_feed:
+//                Common.log(TAG, "FAB CLICK");
+//                startActivity(new Intent(this, ActivityAddFeed.class));
+//                break;
             case R.id.main_logout:
                 getAppInfo().put(getString(R.string.USER_ID), -1);
                 startActivity(new Intent(this, ActivityAuth.class));
@@ -113,7 +117,49 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
         mContainer.setLayoutManager(new LinearLayoutManager(this));
         getFeedPresenter().attachView(this);
 
-        mFabAddFeed.attachToRecyclerView(mContainer);
+
+        FloatingActionsMenu floatingMenu =
+                (com.getbase.floatingactionbutton.FloatingActionsMenu)findViewById(R.id.fab_container);
+        ((FloatingActionsMenu)floatingMenu).setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                mFabTransparent.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                mFabTransparent.setVisibility(View.GONE);
+            }
+        });
+
+
+        /** feed 추가 **/
+        final com.getbase.floatingactionbutton.FloatingActionButton addFeed =
+                (com.getbase.floatingactionbutton.FloatingActionButton) findViewById(R.id.fab_add_feed);
+        addFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //handleClickFab();
+                startActivity(new Intent(getApplicationContext(), ActivityAddFeed.class));
+            }
+        });
+
+        /** report 추가 **/
+        final com.getbase.floatingactionbutton.FloatingActionButton addReport =
+                (com.getbase.floatingactionbutton.FloatingActionButton) findViewById(R.id.fab_add_report);
+        addReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ActivityAddReport.class));
+            }
+        });
+
+
+        //mFabAddFeed.attachToRecyclerView(mContainer);
+    }
+
+    void handleClickFab() {
+        startActivity(new Intent(this, ActivityAddFeed.class));
     }
 
     @Override

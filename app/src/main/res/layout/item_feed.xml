@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:background="#66000000"/>
+                android:background="@color/BLACK_TRANSPARENT"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"

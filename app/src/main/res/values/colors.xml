@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#0277BD</color>
     <color name="colorAccent">#0277BD</color>
 
+    <color name="BLACK_TRANSPARENT">#66000000</color>
+
     <color name="WHITE">#FFF</color>
     <color name="TRANSPARENT">#00000000</color>
     <color name="FEED_COUNT">#FDF698</color>
