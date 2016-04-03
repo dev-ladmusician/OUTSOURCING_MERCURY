@@ -29,6 +29,7 @@ public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.On
     private String mStarted = "";
     private String mEnded = "";
     private String mTitle = "";
+    private String mPeople = "";
 
     private Context mContext = null;
     private DatePickerDialog mDatePicker = null;
@@ -36,6 +37,8 @@ public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.On
 
     @Bind(R.id.add_feed_title)
     EditText mEditTitle;
+    @Bind(R.id.add_feed_people)
+    EditText mEditPeople;
     @Bind(R.id.add_feed_started)
     TextView mTxtStarted;
     @Bind(R.id.add_feed_ended)
@@ -48,8 +51,9 @@ public class ActivityAddFeed extends BaseActivity implements DatePickerDialog.On
         switch (v.getId()) {
             case R.id.add_feed_submit:
                 mTitle = mEditTitle.getText().toString();
+                mPeople = mEditPeople.getText().toString();
                 if (!mTitle.equals(""))
-                    getAddFeedPresenter().saveFeed(getAppInfo().getValue(getString(R.string.USER_ID), -1), mTitle, mStarted, mEnded);
+                    getAddFeedPresenter().saveFeed(getAppInfo().getValue(getString(R.string.USER_ID), -1), mTitle, mPeople, mStarted, mEnded);
                 break;
             case R.id.add_feed_container:
                 Keyboard.hideSoftKeyboard(this);

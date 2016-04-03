@@ -41,6 +41,8 @@ public class ActivityDetailFeed extends BaseActivity implements DetailMvpView<Re
     TextView mTitle;
     @Bind(R.id.detail_feed_period)
     TextView mPeriod;
+    @Bind(R.id.detail_feed_people)
+    TextView mPeople;
 
     private ReportPresenter nReportPresenter = null;
     private ReportsAdapter mReportAdapter = null;
@@ -104,11 +106,16 @@ public class ActivityDetailFeed extends BaseActivity implements DetailMvpView<Re
         mFeed = new FeedDTO(
                 getIntent().getIntExtra(getString(R.string.FEED_ID), -1),
                 getIntent().getStringExtra(getString(R.string.FEED_TITLE)),
-                getIntent().getStringExtra(getString(R.string.FEED_PERIOD))
+                getIntent().getStringExtra(getString(R.string.FEED_PERIOD)),
+                getIntent().getStringExtra(getString(R.string.FEED_PEOPLE))
         );
 
         mTitle.setText(mFeed.getTitle());
         mPeriod.setText(mFeed.getPeriod());
+        if (mFeed.getPeople() != null)
+            mPeople.setText("총 " + mFeed.getPeople() + "명");
+        else
+            mPeople.setText("총 0명");
 
         mReportAdapter = new ReportsAdapter(getApplicationContext());
         mContainer.setAdapter(mReportAdapter);

@@ -7,6 +7,7 @@
     <string name="FEED_ID">FEED_ID</string>
     <string name="FEED_TITLE">FEED_TITLE</string>
     <string name="FEED_PERIOD">FEED_PERIOD</string>
+    <string name="FEED_PEOPLE">FEED_PEOPLE</string>
 
     <string name="REPORT_ID">REPORT_ID</string>
     <string name="REPORT_IMG_URL">REPORT_IMG_URL</string>

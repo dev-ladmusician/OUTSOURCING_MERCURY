@@ -50,6 +50,7 @@ public class FeedService {
         Observable<FeedDTO> addFeed (
                 @Field("userId") int userId,
                 @Field("title") String title,
+                @Field("people") String people,
                 @Field("started") String started,
                 @Field("ended") String ened
         );

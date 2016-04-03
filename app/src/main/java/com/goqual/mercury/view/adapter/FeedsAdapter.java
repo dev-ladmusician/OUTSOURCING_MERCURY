@@ -2,31 +2,22 @@ package com.goqual.mercury.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.ViewTarget;
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
-import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Constant;
 import com.goqual.mercury.view.activity.ActivityDetailFeed;
 
@@ -127,6 +118,7 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
                     intent.putExtra(mContext.getString(R.string.FEED_ID), mFeedList.get(position).get_feedid());
                     intent.putExtra(mContext.getString(R.string.FEED_TITLE), mFeedList.get(position).getTitle());
                     intent.putExtra(mContext.getString(R.string.FEED_PERIOD), mFeedList.get(position).getPeriod());
+                    intent.putExtra(mContext.getString(R.string.FEED_PEOPLE), mFeedList.get(position).getPeople());
                     mContext.startActivity(intent);
                 }
             });

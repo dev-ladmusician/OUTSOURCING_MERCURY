@@ -21,8 +21,8 @@ public class AddFeedHelper extends BasePresenter<AddMvpView> {
         super.detachView();
     }
 
-    public void saveFeed(int userId, String title, String started, String ended) {
-        getFeedService().getFeedApi().addFeed(userId, title, started, ended)
+    public void saveFeed(int userId, String title, String people, String started, String ended) {
+        getFeedService().getFeedApi().addFeed(userId, title, people, started, ended)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<FeedDTO>() {

@@ -9,6 +9,7 @@ public class FeedDTO {
     private String title;
     private String period;
     private String main_img_url;
+    private String people;
 
     public FeedDTO() {}
 
@@ -20,6 +21,13 @@ public class FeedDTO {
         this._feedid = _feedid;
         this.title = title;
         this.period = period;
+    }
+
+    public FeedDTO(int _feedid, String title, String period, String people) {
+        this._feedid = _feedid;
+        this.title = title;
+        this.period = period;
+        this.people = people;
     }
 
     public int get_feedid() {
@@ -60,5 +68,13 @@ public class FeedDTO {
 
     public void setMain_img_url(String main_img_url) {
         this.main_img_url = main_img_url;
+    }
+
+    public String getPeople() {
+        return people;
+    }
+
+    public void setPeople(String people) {
+        this.people = people;
     }
 }

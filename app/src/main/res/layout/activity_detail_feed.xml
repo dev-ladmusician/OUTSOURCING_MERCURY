@@ -42,6 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9월 경주체험학습"
+                        android:layout_centerHorizontal="true"
                         android:textStyle="bold"
                         android:textColor="@color/WHITE"
                         android:textSize="25dp"/>
@@ -58,7 +59,7 @@
                         android:textSize="13dp"/>
 
                     <TextView
-                        android:id="@+id/detail_feed_total_student"
+                        android:id="@+id/detail_feed_people"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/detail_feed_period"
