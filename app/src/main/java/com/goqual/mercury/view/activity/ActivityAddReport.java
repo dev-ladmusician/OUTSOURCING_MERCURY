@@ -53,8 +53,8 @@ import okhttp3.RequestBody;
  */
 public class ActivityAddReport extends BaseActivity
         implements AddMvpView, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    private static final int RESULT_CODE = 0;
     private final String TAG = "ACTIVITY_ADD_REPORT";
+    private static final int RESULT_CODE = 100;
     private final int FLAG_CAMERA = 1;
 
     @Bind(R.id.add_report_container)

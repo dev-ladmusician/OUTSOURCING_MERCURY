@@ -44,7 +44,7 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     private FeedsAdapter mFeedAdapter = null;
     private List<FeedDTO> mFeedList = null;
     private int REQUEST_CODE = 0;
-    private int RESULT_CODE = 0;
+    private int RESULT_CODE = 100;
     private FloatingActionsMenu mFloatingMenu;
 
     @OnClick({R.id.main_logout})
