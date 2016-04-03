@@ -44,62 +44,44 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/feed_height"
         android:paddingLeft="@dimen/feed_side_padding"
-        android:paddingRight="@dimen/feed_side_padding">
+        android:paddingRight="@dimen/feed_side_padding"
+        android:paddingTop="@dimen/feed_upper_padding"
+        android:paddingBottom="@dimen/feed_upper_padding">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/feed_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/feed_seq"
-                    android:textColor="@color/FEED_NUM"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="1"/>
-            </RelativeLayout>
+            android:background="@color/FEED_BG">
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/feed_side_padding"
-                android:layout_weight="4">
+                android:id="@+id/feed_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
 
                 <TextView
                     android:id="@+id/feed_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="9월 경주 체험학습"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3">
+                    android:layout_centerInParent="true"
+                    android:text="9월 경주 체험학습"
+                    android:textSize="20dp"
+                    android:textColor="@color/WHITE"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/feed_period"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/feed_title"
                     android:textSize="12dp"
+                    android:textColor="@color/WHITE"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
                     android:text="2015.09.08 ~ 09.10"/>
             </RelativeLayout>
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/line_item_devider"/>
+        </RelativeLayout>
     </RelativeLayout>
 </com.daimajia.swipe.SwipeLayout>
 

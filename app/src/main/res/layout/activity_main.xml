@@ -22,15 +22,15 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
                 <Button
-                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:id="@+id/main_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="로그아웃"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/WHITE"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:background="@color/TRANSPARENT"/>
 
                 <RelativeLayout
@@ -79,7 +79,9 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_feed_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/feed_upper_padding"
+            android:paddingBottom="@dimen/feed_upper_padding"></android.support.v7.widget.RecyclerView>
 
         <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab_add_feed"

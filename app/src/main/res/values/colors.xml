@@ -8,6 +8,7 @@
     <color name="TRANSPARENT">#00000000</color>
     <color name="FEED_COUNT">#FDF698</color>
     <color name="FEED_NUM">#6C92AF</color>
+    <color name="FEED_BG">#54707D</color>
 
     <color name="IDENTITY_BLUE">#01569B</color>
     <color name="PRESSED_BLUE">#0277BD</color>

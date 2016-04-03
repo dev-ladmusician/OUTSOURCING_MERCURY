@@ -68,8 +68,6 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
     }
 
     class FeedsViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.feed_seq)
-        TextView mSeq;
         @Bind(R.id.feed_title)
         TextView mTitle;
         @Bind(R.id.feed_period)
@@ -89,7 +87,6 @@ public class FeedsAdapter extends RecyclerSwipeAdapter<FeedsAdapter.FeedsViewHol
         }
 
         public void bindView(final int position, FeedDTO feed) {
-            mSeq.setText(position + 1 + "");
             mTitle.setText(feed.getTitle());
             mPeriod.setText(feed.getPeriod());
 
