@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.custom;
+package com.goqual.mercury.view.custom;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

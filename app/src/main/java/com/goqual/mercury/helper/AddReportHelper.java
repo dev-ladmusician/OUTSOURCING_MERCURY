@@ -2,7 +2,7 @@ package com.goqual.mercury.helper;
 
 import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.presenter.BasePresenter;
-import com.goqual.mercury.ui.mvp.AddMvpView;
+import com.goqual.mercury.view.mvp.AddMvpView;
 import com.goqual.mercury.util.Common;
 
 import okhttp3.MediaType;

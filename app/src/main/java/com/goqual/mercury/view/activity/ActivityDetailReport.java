@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.presenter.ReportPresenter;
-import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.DetailMvpView;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.DetailMvpView;
 import com.goqual.mercury.util.Constant;
 
 import java.util.List;

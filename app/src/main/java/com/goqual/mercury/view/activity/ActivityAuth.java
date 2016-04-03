@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.goqual.mercury.R;
 import com.goqual.mercury.common.AuthFragmentEvent;
 import com.goqual.mercury.common.BusProvider;
-import com.goqual.mercury.ui.adapter.AuthFragmentAdapter;
-import com.goqual.mercury.ui.fragment.FragmentAuthJoin;
-import com.goqual.mercury.ui.fragment.FragmentAuthLogin;
+import com.goqual.mercury.view.adapter.AuthFragmentAdapter;
+import com.goqual.mercury.view.fragment.FragmentAuthJoin;
+import com.goqual.mercury.view.fragment.FragmentAuthLogin;
 import com.goqual.mercury.util.Constant;
 import com.squareup.otto.Subscribe;
 

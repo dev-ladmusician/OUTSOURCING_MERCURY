@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.goqual.mercury.R;
 import com.goqual.mercury.helper.AddFeedHelper;
-import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.AddMvpView;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.AddMvpView;
 import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Keyboard;
 

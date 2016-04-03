@@ -1,7 +1,7 @@
 package com.goqual.mercury.presenter;
 
 import com.goqual.mercury.data.local.UserDTO;
-import com.goqual.mercury.ui.mvp.AuthMvpView;
+import com.goqual.mercury.view.mvp.AuthMvpView;
 import com.goqual.mercury.util.Common;
 import com.goqual.mercury.util.Constant;
 

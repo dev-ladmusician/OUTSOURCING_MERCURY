@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.adapter;
+package com.goqual.mercury.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
-import com.goqual.mercury.ui.activity.ActivityDetailFeed;
+import com.goqual.mercury.view.activity.ActivityDetailFeed;
 
 import java.util.ArrayList;
 import java.util.List;

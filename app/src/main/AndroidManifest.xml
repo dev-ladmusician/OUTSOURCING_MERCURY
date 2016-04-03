@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.ActivityMain"
+            android:name=".view.activity.ActivityMain"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -27,27 +27,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.ActivityAuth"
+            android:name=".view.activity.ActivityAuth"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.ActivityDetailReport"
+            android:name=".view.activity.ActivityDetailReport"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.ActivityAddFeed"
+            android:name=".view.activity.ActivityAddFeed"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.ActivityDetailFeed"
+            android:name=".view.activity.ActivityDetailFeed"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.ActivityAddReport"
+            android:name=".view.activity.ActivityAddReport"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>

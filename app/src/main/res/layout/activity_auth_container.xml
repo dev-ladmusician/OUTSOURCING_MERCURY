@@ -5,9 +5,9 @@
     android:orientation="vertical"
     android:background="@drawable/bg_main">
 
-    <com.goqual.mercury.ui.custom.CustomViewPager
+    <com.goqual.mercury.view.custom.CustomViewPager
         android:id="@+id/auth_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.goqual.mercury.ui.custom.CustomViewPager>
+    </com.goqual.mercury.view.custom.CustomViewPager>
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.base;
+package com.goqual.mercury.view.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

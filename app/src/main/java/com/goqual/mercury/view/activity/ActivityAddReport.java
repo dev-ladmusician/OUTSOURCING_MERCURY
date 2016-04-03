@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,8 +22,8 @@ import com.bumptech.glide.request.target.Target;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.helper.AddReportHelper;
-import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.AddMvpView;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.AddMvpView;
 import com.goqual.mercury.util.Dialog;
 import com.goqual.mercury.util.Keyboard;
 

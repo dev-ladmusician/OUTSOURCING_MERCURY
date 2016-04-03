@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.ActivityMain">
+    tools:context=".view.activity.ActivityMain">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="1.5"
         android:background="@drawable/bg_main_title">
 
         <LinearLayout
@@ -30,45 +30,31 @@
                     android:text="로그아웃"
                     android:layout_alignParentRight="true"
                     android:textColor="@color/WHITE"
+                    android:textSize="10dp"
                     android:background="@color/TRANSPARENT"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="@dimen/main_title_container_padding_side"
-                android:paddingRight="@dimen/main_title_container_padding_side"
-                android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/main_title_user_name"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="김동진님"
-                    android:textStyle="bold"
-                    android:textColor="@color/WHITE"
-                    android:textSize="25dp"/>
+                    android:layout_centerInParent="true">
+                    <TextView
+                        android:id="@+id/main_sub_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/WHITE"
+                        android:textSize="@dimen/main_title_sub_title_size"
+                        android:text="총 게시물"/>
+                    <TextView
+                        android:id="@+id/main_total_count_feed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/main_title_sub_title_size"
+                        android:textColor="@color/FEED_COUNT"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/main_sub_title"
+                        android:text="0"/>
+                </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/main_sub_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/main_title_sub_title_margin_top"
-                    android:layout_below="@+id/main_title_user_name"
-                    android:textColor="@color/WHITE"
-                    android:textSize="@dimen/main_title_sub_title_size"
-                    android:text="총 게시물"/>
-
-                <TextView
-                    android:id="@+id/main_total_count_feed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/main_title_sub_title_margin_top"
-                    android:layout_below="@+id/main_title_user_name"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="@dimen/main_title_sub_title_size"
-                    android:textColor="@color/FEED_COUNT"
-                    android:layout_toRightOf="@+id/main_sub_title"
-                    android:text="0"/>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

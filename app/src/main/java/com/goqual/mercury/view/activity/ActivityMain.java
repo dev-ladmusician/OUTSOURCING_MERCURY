@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import com.daimajia.swipe.util.Attributes;
 import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.presenter.FeedPresenter;
-import com.goqual.mercury.ui.adapter.FeedsAdapter;
-import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.MvpView;
+import com.goqual.mercury.view.adapter.FeedsAdapter;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.MvpView;
 import com.goqual.mercury.util.Common;
 
 import java.util.Collections;
@@ -34,8 +34,6 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
     RecyclerView mContainer;
     @Bind(R.id.main_total_count_feed)
     TextView mTxtFeedCount;
-    @Bind(R.id.main_title_user_name)
-    TextView mTitle;
     @Bind(R.id.fab_add_feed)
     com.melnykov.fab.FloatingActionButton mFabAddFeed;
     @Bind(R.id.main_feed_no_report)
@@ -108,7 +106,6 @@ public class ActivityMain extends BaseActivity implements MvpView<FeedDTO> {
             startActivity(new Intent(this, ActivityAuth.class));
             finish();
         }
-        mTitle.setText(getAppInfo().getValue(getString(R.string.USER_NAME)));
 
         mFeedAdapter = new FeedsAdapter(this, getFeedPresenter());
         mFeedAdapter.setMode(Attributes.Mode.Single);

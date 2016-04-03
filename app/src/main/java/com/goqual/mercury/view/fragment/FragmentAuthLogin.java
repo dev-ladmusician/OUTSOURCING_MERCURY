@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.fragment;
+package com.goqual.mercury.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.goqual.mercury.common.BusProvider;
 import com.goqual.mercury.common.InfoSharedPreference;
 import com.goqual.mercury.data.local.UserDTO;
 import com.goqual.mercury.presenter.AuthPresenter;
-import com.goqual.mercury.ui.mvp.AuthMvpView;
+import com.goqual.mercury.view.mvp.AuthMvpView;
 import com.goqual.mercury.util.Constant;
 import com.goqual.mercury.util.Keyboard;
 

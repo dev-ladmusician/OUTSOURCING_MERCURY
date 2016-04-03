@@ -1,6 +1,6 @@
-package com.goqual.mercury.ui.mvp;
+package com.goqual.mercury.view.mvp;
 
-import com.goqual.mercury.ui.base.BaseMvpView;
+import com.goqual.mercury.view.base.BaseMvpView;
 
 import java.util.List;
 

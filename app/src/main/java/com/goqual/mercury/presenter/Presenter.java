@@ -1,6 +1,6 @@
 package com.goqual.mercury.presenter;
 
-import com.goqual.mercury.ui.base.BaseMvpView;
+import com.goqual.mercury.view.base.BaseMvpView;
 
 /**
  * Every presenter in the app must either implement this interface or extend BasePresenter

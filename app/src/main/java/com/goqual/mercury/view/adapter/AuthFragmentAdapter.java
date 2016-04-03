@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.adapter;
+package com.goqual.mercury.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

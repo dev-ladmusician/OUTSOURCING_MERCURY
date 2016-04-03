@@ -4,7 +4,7 @@ import com.goqual.mercury.data.DataManager;
 import com.goqual.mercury.data.remote.AuthService;
 import com.goqual.mercury.data.remote.FeedService;
 import com.goqual.mercury.data.remote.ReportService;
-import com.goqual.mercury.ui.base.BaseMvpView;
+import com.goqual.mercury.view.base.BaseMvpView;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for

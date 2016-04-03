@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.base;
+package com.goqual.mercury.view.base;
 
 /**
  * Base interface that any class that wants to act as a View in the MVP (Model View Presenter)

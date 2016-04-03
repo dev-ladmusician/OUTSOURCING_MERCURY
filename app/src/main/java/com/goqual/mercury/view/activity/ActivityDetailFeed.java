@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.activity;
+package com.goqual.mercury.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +17,9 @@ import com.goqual.mercury.R;
 import com.goqual.mercury.data.local.FeedDTO;
 import com.goqual.mercury.data.local.ReportDTO;
 import com.goqual.mercury.presenter.ReportPresenter;
-import com.goqual.mercury.ui.adapter.ReportsAdapter;
-import com.goqual.mercury.ui.base.BaseActivity;
-import com.goqual.mercury.ui.mvp.DetailMvpView;
+import com.goqual.mercury.view.adapter.ReportsAdapter;
+import com.goqual.mercury.view.base.BaseActivity;
+import com.goqual.mercury.view.mvp.DetailMvpView;
 
 import java.util.Collections;
 import java.util.List;

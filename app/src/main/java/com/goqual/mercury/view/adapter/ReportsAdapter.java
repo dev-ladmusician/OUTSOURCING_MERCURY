@@ -1,4 +1,4 @@
-package com.goqual.mercury.ui.adapter;
+package com.goqual.mercury.view.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
